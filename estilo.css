@@ -82,14 +82,24 @@ nav a:hover {
     border-radius: 10px;
     text-align: center;
     transition: 0.3s;
-}
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 320px; /* em vez de height */
+}
+.card h3 {
+    min-height: 48px; /* melhor que height */
+    line-height: 1.3;
+}
 
 /*imagem dos produtos,página de produtos*/
 .imagem-produto {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain; /* TROCA aqui */
+    background-color: #fff; /* opcional, pra não ficar estranho */
 }
 /* quando passar encima dos produtos vai ficar um pouco maior, página de produtos */
 .card:hover {
@@ -109,7 +119,100 @@ button {
 button:hover {
     background-color: darkred;
 }
+/*CARRINHO*/
+/* nome dos produtos alinhado */
+.card h3 {
+    height: 40px; /* altura fixa para alinhar */
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* máximo de 2 linhas */
+    -webkit-box-orient: vertical;
+    
+    overflow: hidden;
+}
+/* container do carrinho */
+#lista-carrinho {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+}
 
+/* cada item */
+.item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* imagem */
+.item-carrinho img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+/* info do produto */
+.item-carrinho .info {
+    flex: 1;
+    margin-left: 15px;
+    text-align: left;
+}
+
+/* nome */
+.item-carrinho h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* preço */
+.item-carrinho p {
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* total */
+#total {
+    margin-top: 20px;
+    font-size: 22px;
+    color: black;
+}
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantidade button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantidade span {
+    font-weight: bold;
+}
+.unitario {
+    font-size: 14px;
+    color: gray;
+}
+
+.total-item {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
 /*SOBRE*/
 /* texto sobre, página sobre */
 .container-sobre {
@@ -123,7 +226,7 @@ button:hover {
 
 /* texto sobre, página sobre */
 #sobre {
-    width: 500px;
+    width: 600px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.7;
@@ -132,7 +235,7 @@ button:hover {
 
 /* imagem ao lado do texto sobre, página sobre */
 #imagem-sobre img {
-    width: 520px;
+    width: 560px;
     height: 320px;
     object-fit: cover;
     border-radius: 15px;
@@ -161,7 +264,7 @@ button:hover {
        
 }
 /* linha abaixo do titulo produtos,diferencial e publico alvo, página sobre */
-.titulo-secao::after {
+.titulo-secao:after {
     content: "";
     display: block;
     width: 60px;
@@ -175,8 +278,10 @@ button:hover {
     margin-left: 60px;
     margin-right: 60px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.6;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.998);
 }
 
 /* lista de produtos vendidos, página sobre */
@@ -190,11 +295,6 @@ ul {
 /* espaço entre os itens da lista, página sobre */
 ul li {
     margin-bottom: 8px;
-}
-
-/* texto "sobre" fica vermelho hover, página sobre */
-.texto-sobre:hover {
-    color: rgb(151, 9, 9);
 }
 /* lista de produtos oferecidos, página sobre*/
 #ul{
@@ -354,7 +454,7 @@ ul li {
     font-size: 18px;
     
 }
-/* PORTFÓLIO */
+/* RESULTADOS */
 
 .portfolio-container {
     padding: 60px;
@@ -376,7 +476,7 @@ ul li {
     transition: 0.3s;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
 }
-
+/*configuração das imagens, página resultados*/
 .portfolio-card img {
     width: 100%;
     height: 300px;
@@ -392,30 +492,14 @@ ul li {
     font-size: 14px;
     color: #555;
 }
-
-/* efeito igual aos produtos */
-.portfolio-card:hover {
-    transform: scale(1.05);
-}
-
-
-.estrelas {
-    color: gold;
-    font-size: 20px;
-    margin: 8px 0;
-    letter-spacing: 3px;
-}
-.instagram {
-    background: white
-    color: white;
+/*texto principal, página resultados*/
+.instagram {  
     font-size: 20px;
     font-weight: bold;
     padding: 20px;
     margin: 30px auto;
     width: 80%;
-    border-radius: 10px;
     text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
 
 }
