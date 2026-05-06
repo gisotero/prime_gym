@@ -292,19 +292,67 @@ ul li {
 }
 /*CONTATO*/
 
-/* botão de enviar, página de contato */
-button.enviar {
-    background-color: red;
+/* TOPO, página contato*/
+.contato-topo {
+    background: linear-gradient(90deg, #d20000, #9b001a);
     color: white;
-    border: none;
+    text-align: center;
     padding: 10px;
-    cursor: pointer;
-    border-radius: 50px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-/* quando passar por cima de "enviar " o botão vai ficar vermelho escuro, página de contato */
-button enviar:hover {
-    background-color: darkred;
+/* CAIXA PRINCIPAL, página contato*/
+.contato-box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background: #f5f5f5;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+/* CADA ITEM, página contato*/
+.contato-item {
+    background: white;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+/* HOVER BONITO, página contato */
+.contato-item:hover {
+    transform: translateY(-5px);
+}
+
+/* TITULO, página contato */
+.contato-item h3 {
+    color: #c40000;
+}
+
+/* TEXTO MENOR, página contato */
+.contato-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* DADO PRINCIPAL, página contato */
+.contato-item span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* TEXTO FINAL, página contato */
+.disponivel {
+    text-align: center;
+    margin: 30px;
+    font-size: 18px;
+    
 }
 /* PORTFÓLIO */
 
@@ -356,4 +404,25 @@ button enviar:hover {
     font-size: 20px;
     margin: 8px 0;
     letter-spacing: 3px;
+}
+.instagram {
+    background: linear-gradient(90deg, red, #ff4d4d);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px rgba(255,0,0,0.4);
+    transition: 0.3s;
+}
+
+/* efeito quando passa o mouse */
+.instagram:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 30px rgba(255,0,0,0.6);
 }
