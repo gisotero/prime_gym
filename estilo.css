@@ -294,12 +294,12 @@ ul li {
 
 /* TOPO, página contato*/
 .contato-topo {
-    background: linear-gradient(90deg, #d20000, #9b001a);
-    color: white;
+    
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 10px;
     font-size: 24px;
-    font-weight: bold;
+
 }
 
 /* CAIXA PRINCIPAL, página contato*/
@@ -406,7 +406,7 @@ ul li {
     letter-spacing: 3px;
 }
 .instagram {
-    background: linear-gradient(90deg, red, #ff4d4d);
+    background: white
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -417,12 +417,5 @@ ul li {
     text-align: center;
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
-    box-shadow: 0 5px 20px rgba(255,0,0,0.4);
-    transition: 0.3s;
-}
 
-/* efeito quando passa o mouse */
-.instagram:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 30px rgba(255,0,0,0.6);
 }
