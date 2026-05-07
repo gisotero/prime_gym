@@ -31,19 +31,23 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
-/* RODAPÉ, todas as páginas */
-footer {
-    font-family: 'Bebas Neue', sans-serif;
 
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-	margin:0px;
-}
-/* quando passar por cima do menu, a cor vai ficar vermelha, todas as páginas */
+/* hover */
 nav a:hover {
     color: red;
 }
+
+/* página atual */
+nav a.ativo {
+    color: rgb(108, 108, 108);
+}
+
+
+
+
+
+
+
 
 /* BANNER de ofertas da semana, pagina de produtos */
 .banner {
@@ -51,6 +55,25 @@ nav a:hover {
     color: black;
     text-align: center;
     padding: 40px;
+}
+.pesquisa {
+
+    text-align: center;
+
+    margin: 20px 0;
+}
+
+.pesquisa input {
+
+    width: 300px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    border: 1px solid #ccc;
+
+    font-size: 16px;
 }
 /* título do banner, página de produtos */
 .filtros {
@@ -119,100 +142,251 @@ button {
 button:hover {
     background-color: darkred;
 }
-/*CARRINHO*/
-/* nome dos produtos alinhado */
-.card h3 {
-    height: 40px; /* altura fixa para alinhar */
-    
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* máximo de 2 linhas */
-    -webkit-box-orient: vertical;
-    
-    overflow: hidden;
-}
-/* container do carrinho */
-#lista-carrinho {
-    max-width: 800px;
-    margin: auto;
-    margin-top: 20px;
+.nossoinstagram {
+
+    width: 110%;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 80px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
 }
 
-/* cada item */
+.nossoinstagram-conteudo {
+    max-width: 900px;
+
+    margin: auto;
+
+    background: linear-gradient(135deg, #111, #1f1f1f);
+
+    color: white;
+
+    border-radius: 20px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.nossoinstagram h2 {
+
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.nossoinstagram p {
+
+    font-size: 18px;
+
+    color: #ccc;
+
+    max-width: 600px;
+
+    margin: auto;
+
+    margin-bottom: 30px;
+
+    line-height: 1.6;
+}
+
+.nossoinstagram a {
+
+    display: inline-block;
+
+    background: linear-gradient(135deg, red, darkred);
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.nossoinstagram a:hover {
+
+    transform: scale(1.05);
+
+    opacity: 0.9;
+}
+
+
+
+
+
+/* CONTAINER DO CARRINHO */
+
+#lista-carrinho {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* ITEM */
+
 .item-carrinho {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
 
-    background: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
+    background-color: white;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* imagem */
+/* CHECKBOX */
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* IMAGEM */
+
 .item-carrinho img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
 }
 
-/* info do produto */
-.item-carrinho .info {
+/* INFO */
+
+.info {
     flex: 1;
-    margin-left: 15px;
-    text-align: left;
 }
 
-/* nome */
-.item-carrinho h3 {
-    font-size: 16px;
+.info h3 {
     margin: 0;
+    margin-bottom: 10px;
 }
 
-/* preço */
-.item-carrinho p {
+/* PREÇOS */
+
+.unitario {
+    color: gray;
+    margin: 5px 0;
+}
+
+.total-item {
     color: red;
     font-weight: bold;
-    margin-top: 5px;
+    margin: 5px 0;
 }
 
-/* total */
-#total {
-    margin-top: 20px;
-    font-size: 22px;
-    color: black;
-}
+/* QUANTIDADE */
+
 .quantidade {
     display: flex;
     align-items: center;
+
     gap: 10px;
-    margin-top: 10px;
+
+    margin-top: 15px;
 }
 
 .quantidade button {
-    background: red;
+
+    background-color: red;
+
     color: white;
+
     border: none;
-    padding: 5px 10px;
+
+    padding: 5px 12px;
+
     border-radius: 5px;
+
     cursor: pointer;
+
+    font-size: 16px;
 }
 
 .quantidade span {
     font-weight: bold;
-}
-.unitario {
-    font-size: 14px;
-    color: gray;
+    font-size: 18px;
 }
 
-.total-item {
-    font-size: 16px;
+/* TOTAL */
+
+#total {
+
+    text-align: center;
+
+    font-size: 30px;
+
     font-weight: bold;
-    color: red;
+
+    margin-top: 30px;
+
+    margin-bottom: 50px;
 }
+.carrinho-vazio {
+
+    text-align: center;
+
+    margin-top: 100px;
+}
+
+.carrinho-vazio h2 {
+
+    color: #555;
+
+    margin-bottom: 20px;
+}
+
+.carrinho-vazio button {
+
+    background-color: red;
+
+    color: white;
+
+    border: none;
+
+    padding: 15px 25px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.carrinho-vazio button:hover {
+
+    background-color: darkred;
+}
+
+
+
+
+
+
+
+
 /*SOBRE*/
 /* texto sobre, página sobre */
 .container-sobre {
@@ -390,6 +564,14 @@ ul li {
     opacity: 0;
     transition: 1s;
 }
+
+
+
+
+
+
+
+
 /*CONTATO*/
 
 /* TOPO, página contato*/
@@ -454,6 +636,16 @@ ul li {
     font-size: 18px;
     
 }
+
+
+
+
+
+
+
+
+
+
 /* RESULTADOS */
 
 .portfolio-container {
@@ -502,4 +694,7 @@ ul li {
     text-align: center;
     letter-spacing: 1px;
 
+}
+.h4{
+    color: #3b2d4a;
 }

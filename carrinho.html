@@ -1,39 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Contato</title>
-	 <link rel="stylesheet" href="estilo.css">
-     <style>
-     body {
-        margin: 0;
-        font-family: 'Bebas Neue', sans-serif;
-        text-align: center;
-    }
-    </style>
-</head>
-<body>
-<header>
-<img src="img/logo.png" width="300">
-    <h1>Fale conosco</h1>
-</header>
+<html lang="pt-br">
 
-<nav class="menu-principal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrinho</title>
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <header>
+
+        <img src="img/logo.png" width="250">
+
+
+    </header>
+
+    <nav class="menu-principal">
     <a href="produtos.html">Produtos</a>
-	<a href="carrinho.html">Carrinho</a>
+		<a href="carrinho.html"class="ativo">Carrinho</a>
     <a href="sobre.html">Sobre</a>
     <a href="contato.html">Contato</a>
     <a href="portfolio.html">Resultados</a>
 </nav>
 
+    <div id="lista-carrinho"></div>
 
-<h1>Seu Carrinho 🛒</h1>
+    <h2 id="total"></h2>
 
-<div id="lista-carrinho"></div>
-<h2 id="total"></h2>
-<script>
-    document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2);
-</script>
-<script src="script.js"></script>
-<script src="carrinho.js"></script>
+    <script src="carrinho.js"></script>
+
 </body>
+
 </html>
