@@ -37,7 +37,7 @@ nav a:hover {
     color: red;
 }
 
-/* página atual */
+/*marcação para identificar em qual página está, todas as páginas*/
 nav a.ativo {
     color: rgb(108, 108, 108);
 }
@@ -48,7 +48,7 @@ nav a.ativo {
 
 
 
-
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PRODUTOS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /* BANNER de ofertas da semana, pagina de produtos */
 .banner {
     background: linear-gradient(to right, black, red);
@@ -56,13 +56,14 @@ nav a.ativo {
     text-align: center;
     padding: 40px;
 }
+/*barra de pesquisa, página de produtos*/
 .pesquisa {
 
     text-align: center;
 
     margin: 20px 0;
 }
-
+/*texto dentro da barra de pesquisa, página de produtos*/
 .pesquisa input {
 
     width: 300px;
@@ -112,8 +113,9 @@ nav a.ativo {
 
     min-height: 320px; /* em vez de height */
 }
+/* nome dos produtos, página de produtos */
 .card h3 {
-    min-height: 48px; /* melhor que height */
+    min-height: 48px; 
     line-height: 1.3;
 }
 
@@ -144,7 +146,7 @@ button:hover {
 }
 .nossoinstagram {
 
-    width: 110%;
+    width: 115%;
 
     display: flex;
 
@@ -229,7 +231,7 @@ button:hover {
 
 
 
-/* CONTAINER DO CARRINHO */
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARRINHO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 #lista-carrinho {
     max-width: 900px;
@@ -387,7 +389,29 @@ button:hover {
 
 
 
-/*SOBRE*/
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SOBRE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.mensagem-inicial{
+
+    max-width: 800px;
+
+    margin: 20px auto;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background-color: #111;
+
+    color: white;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
 /* texto sobre, página sobre */
 .container-sobre {
     display: flex;
@@ -548,22 +572,6 @@ ul li {
     color: #ffffff;
 }
 
-/*carrossel, pagina sobre*/
-.carrossel {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
-}
-/* imagens do carrossel, pagina sobre*/
-.slide {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    position: absolute;
-    opacity: 0;
-    transition: 1s;
-}
 
 
 
@@ -572,7 +580,7 @@ ul li {
 
 
 
-/*CONTATO*/
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<CONTATO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /* TOPO, página contato*/
 .contato-topo {
@@ -646,7 +654,7 @@ ul li {
 
 
 
-/* RESULTADOS */
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PORTFOLIO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
 .portfolio-container {
     padding: 60px;
