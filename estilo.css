@@ -32,7 +32,7 @@ nav a {
     font-weight: bold;
 }
 
-/* hover */
+/* hover para menu, todas as páginas */
 nav a:hover {
     color: red;
 }
@@ -144,6 +144,7 @@ button {
 button:hover {
     background-color: darkred;
 }
+/*card do instagram, página de produtos*/
 .nossoinstagram {
 
     width: 115%;
@@ -158,7 +159,7 @@ button:hover {
 
     box-sizing: border-box;
 }
-
+/* conteúdo do card do instagram, página de produtos */
 .nossoinstagram-conteudo {
     max-width: 900px;
 
@@ -176,14 +177,14 @@ button:hover {
 
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
-
+/* título do card do instagram, página de produtos */
 .nossoinstagram h2 {
 
     font-size: 35px;
 
     margin-bottom: 15px;
 }
-
+/* texto do card do instagram, página de produtos */
 .nossoinstagram p {
 
     font-size: 18px;
@@ -198,7 +199,7 @@ button:hover {
 
     line-height: 1.6;
 }
-
+/* botão do instagram, página de produtos */
 .nossoinstagram a {
 
     display: inline-block;
@@ -219,7 +220,7 @@ button:hover {
 
     transition: 0.3s;
 }
-
+/* quando passar por cima do botão do instagram, página de produtos */
 .nossoinstagram a:hover {
 
     transform: scale(1.05);
@@ -390,28 +391,7 @@ button:hover {
 
 
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SOBRE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-.mensagem-inicial{
 
-    max-width: 800px;
-
-    margin: 20px auto;
-
-    text-align: center;
-
-    padding: 20px;
-
-    background-color: #111;
-
-    color: white;
-
-    border-radius: 15px;
-
-    font-size: 18px;
-
-    line-height: 1.6;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
 /* texto sobre, página sobre */
 .container-sobre {
     display: flex;
@@ -683,16 +663,16 @@ ul li {
     object-fit: cover;
     border-radius: 10px;
 }
-
+/*distância entre as imagens e os textos dentro do card, página resultados*/
 .portfolio-card h3 {
     margin: 10px 0;
 }
-
+/*configuração dos textos, página resultados*/
 .portfolio-card p {
     font-size: 14px;
     color: #555;
 }
-/*texto principal, página resultados*/
+/*texto ensinando a aparecer no site, página resultados*/
 .instagram {  
     font-size: 20px;
     font-weight: bold;
@@ -703,6 +683,30 @@ ul li {
     letter-spacing: 1px;
 
 }
+/*cor do instagram mencionado dentro dos cards, página resultados*/
 .h4{
     color: #3b2d4a;
+}
+/*mensagem de agradecimento, página resultados*/
+.mensagem-inicial{
+
+    max-width: 800px;
+
+    margin: 20px auto;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background-color: #111;
+
+    color: white;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
 }
