@@ -1,0 +1,3301 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[8673],{889:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(17651)),o=a(r(53368));t.default=(0,n.default)`
+  query showcaseQuery(
+    $showcaseId: String
+    $customerId: String
+    $placeId: String
+    $pageId: String
+    $partnerId: String
+    $pmdPromoter: String
+    $storeId: String
+    $productId: String
+    $filters: [FilterInput]
+    $includePagination: Boolean = true
+    $toggleWishlist: Boolean = true
+    $zipcode: String
+    $isSourceProductAds: Boolean = false
+  ) {
+    recommendation(
+      recommendationRequest: {
+        customerId: $customerId
+        pageId: $pageId
+        placeId: $placeId
+        productId: $productId
+        metadata: {
+          partnerId: $partnerId
+          loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId }
+        }
+        filters: $filters
+        searchRequest: { location: { zipCode: $zipcode } }
+        isSourceProductAds: $isSourceProductAds
+      }
+    ) {
+      dynamic(showcaseId: $showcaseId) {
+        id
+        title
+        type
+        designTokenId
+        products {
+          ...product
+          isOnWishlist @include(if: $toggleWishlist)
+          shippingTag {
+            cost
+            time
+            complement
+          }
+        }
+        highlight {
+          ...product
+          shippingTag {
+            cost
+            time
+            complement
+          }
+        }
+        button {
+          label
+          action
+        }
+        pagination {
+          ...showcasePagination @include(if: $includePagination)
+        }
+      }
+    }
+  }
+  ${i.default}
+  ${o.default}
+`},1606:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment categories on ItemCategory {
+    id
+    name
+    url
+    subcategories {
+      id
+      name
+      url
+    }
+  }
+`)},2567:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment brand_itemBrand on ItemBrand {
+    label
+    slug
+  }
+`)},3962:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment item_listHome on ListHome {
+    items {
+      id
+      image {
+        src
+        alt
+      }
+      link {
+        text
+        href
+      }
+    }
+  }
+`},4569:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation RemoveItems($input: [RemoveItemInput!]!, $basketId: ID!) {
+    removeItems(input: $input, basketId: $basketId)
+  }
+`},5109:function(e,t,r){var a=this&&this.__createBinding||(Object.create?function(e,t,r,a){void 0===a&&(a=r);var n=Object.getOwnPropertyDescriptor(t,r);(!n||("get"in n?!t.__esModule:n.writable||n.configurable))&&(n={enumerable:!0,get:function(){return t[r]}}),Object.defineProperty(e,a,n)}:function(e,t,r,a){void 0===a&&(a=r),e[a]=t[r]}),n=this&&this.__exportStar||function(e,t){for(var r in e)"default"===r||Object.prototype.hasOwnProperty.call(t,r)||a(t,e,r)};Object.defineProperty(t,"__esModule",{value:!0}),n(r(79186),t),n(r(79911),t),n(r(84986),t)},5550:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`query trendsQuery(
+  $recentSearches: [String!]
+  $limit: Int = 6
+) {
+  trends(trendsRequest: {
+    recentSearches: $recentSearches,
+    total: $limit
+  }){
+    userHistory
+    topTerms
+  }
+}
+`)},6309:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query breadcrumbQuery($categoryId: String!, $subCategoryId: String) {
+    categoryContent(categoryId: $categoryId, subcategoryId: $subCategoryId) {
+      breadcrumb {
+        label
+        categoryId
+        subcategoryId
+        meta {
+          description
+          canonical
+          title
+        }
+      }
+    }
+  }
+`},6628:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment subcategory_itemSubcategory on ItemSubCategory {
+    id
+    name
+    url
+  }
+`)},7986:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment bundles_itemBundles on ItemBundle {
+    id
+    image
+    price
+    quantity
+    reference
+    title
+    factsheet {
+      ...factsheet_itemFactsheet
+    }
+    dimensions {
+      ...dimensions_itemDimensions
+    }
+  }
+`)},8819:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+    fragment paymentMethods on PaymentMethods {
+        id
+        installmentPlans {
+            installment
+            installmentAmount
+            interest
+            interestAmount
+            totalAmount
+            discount
+        }
+    }
+`)},8998:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment media_itemMedia on ItemMedia {
+    audios
+    images
+    podcasts
+    videos
+  }
+`)},9033:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment estimateError on EstimateErrorResponse {
+    error
+    status
+    message
+    uuid
+  }
+
+  fragment shippings on ShippingResponse {
+    status
+    shippings {
+      id
+      packages {
+        deliveryTypes {
+          id
+          description
+          type
+          time
+          price
+        }
+      }
+    }
+  }
+
+  fragment estimate on EstimateResponse {
+    disclaimers {
+      sequence
+      message
+    }
+    deliveries {
+      closenessGroup {
+        id
+      }
+      id
+      status {
+        code
+      }
+      modalities {
+        id
+        type
+        name
+        shippingTime {
+          unit
+          value {
+            min
+            max
+          }
+          description
+          disclaimers {
+            sequence
+            message
+          }
+          expectedDeliveryDate {
+            max
+            min
+          }
+        }
+        cost {
+          customer
+        }
+        prices {
+          customer
+          operation
+          currency
+          exchangeRate
+        }
+      }
+    }
+    closenessGroups {
+      customerCost
+      disclaimer
+      id
+      items {
+        seller {
+          id
+          sku
+        }
+      }
+      name
+      operationCost
+      slug
+      shortPolicy
+      target
+      targetRemaining
+    }
+    status
+  }
+
+  query shippingQuery($shippingRequest: ShippingRequest!) {
+    shipping(shippingRequest: $shippingRequest) {
+      status
+      ...shippings
+      ...estimate
+      ...estimateError
+    }
+  }
+`},10093:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query RetrieveProductKeySellingPointsQuery(
+    $navigationId: ID! = ""
+  ) {
+    keySellingPoint(id: $navigationId) {
+      navigationId
+      items
+    }
+  }
+`)},10112:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment productCategory on ProductCategory {
+    id
+    name
+  }
+`)},10611:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment badges on Badge {
+    text
+    imageUrl
+    container
+    position
+    tooltip
+  }
+`)},12856:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment chatMessageError on ChatErrorResponse {
+    message
+    slug
+    stack
+    detail {
+      loc
+      msg
+    }
+  }
+`},13576:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment geoLocTags on Tag {
+    title
+    icon
+  }
+`)},13660:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(84082)),o=a(r(12856));t.default=(0,n.default)`
+  mutation CreateMessage(
+    $conversationId: String!
+    $content: String!
+    $userFullname: String!
+    $userId: String!
+    $userName: String!
+    $customFields: [ChatMessageAttributeMutation]
+    $channel: String!
+    $organization: String!
+    $integration: Boolean = false
+  ) {
+    createMessage(
+      request: {
+        conversationId: $conversationId
+        channel: $channel
+        organization: $organization
+        message: {
+          integration: $integration
+          content: $content
+          fromUser: { fullName: $userFullname, refKey: $userId, username: $userName }
+          customFields: $customFields
+        }
+      }
+    ) {
+      ...chatMessage
+      ...chatMessageError
+    }
+  }
+  ${i.default}
+  ${o.default}
+`},13719:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query seoDepartmentContent($categoryId: String!, $subCategoryId: String) {
+    seoDepartmentContent(categoryId: $categoryId, subcategoryId: $subCategoryId) {
+      h1
+      faq {
+        ...faq
+      }
+      linkList {
+        href
+        alt
+        value
+      }
+      meta {
+        ...meta_seoMeta
+      }
+      supportText {
+        ...supportText
+      }
+    }
+  }
+  ${i.SeoFaqFragment}
+  ${i.SeoMetaFragment}
+  ${i.SeoSupportTextFragment}
+`},14023:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query VehiclePartCompatibility(
+    $brand: String = ""
+    $model: String = ""
+    $version: String = ""
+    $year: Int = 0
+    $partNumber: String = ""
+  ) {
+    compatibility(
+      brand: $brand
+      model: $model
+      year: $year
+      version: $version
+      codigoPeca: $partNumber
+    ) {
+      compatible
+    }
+  }
+`},14333:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment selection on Selection {
+    id
+    name
+    description
+    endDate
+  }
+`)},15538:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query CustomerAddresses($customerAddressesId: ID!) {
+    customerAddresses(id: $customerAddressesId) {
+      id
+      isDefault
+      address
+      city
+      number
+      state
+      village
+      zipCode
+    }
+  }
+`},15779:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query GetLastProductFromConversation(
+    $conversationId: String!
+    $organization: String
+    $channel: String
+  ) {
+    getLastProductFromConversation(
+      request: {
+        conversationId: $conversationId
+        organization: $organization
+        channel: $channel
+      }
+    ) {
+      productId
+    }
+  }
+`},17009:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+query($letter: String! = "a", $page: Int = 1, $pageSize: Int = 30) {
+  brandList(brandListRequest: { letter: $letter, page: $page, pageSize: $pageSize }) {
+    brands {
+      slug
+      letter
+      brand
+    }
+    pageSize
+    pages
+    records
+  }
+}`)},17651:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  fragment product on Product {
+    id
+    adsSellerId
+    variationId
+    title
+    description
+    image
+    available
+    url
+    path
+    reference
+    offerTags
+    restrictions
+    price {
+      paymentMethodDescription
+      price
+      fullPrice
+      bestPrice
+      discount
+      currency
+    }
+    installment {
+      paymentMethodDescription
+      quantity
+      amount
+      totalAmount
+    }
+    rating {
+      count
+      score
+    }
+    badges {
+      text
+      imageUrl
+      container
+      position
+      tooltip
+    }
+    seller {
+      ...seller
+    }
+    brand {
+      ...brand
+    }
+    category {
+      ...productCategory
+    }
+    subcategory {
+      ...subcategory
+    }
+    attributes {
+      ...attributes
+    }
+  }
+  ${i.ProductWithSellerFragment}
+  ${i.ProductBrandFragment}
+  ${i.ProductCategoryFragment}
+  ${i.ProductSubCategoryFragment}
+  ${i.ProductAttributesFragment}
+`},17787:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment factsheet_itemFactsheet on FactSheetItem {
+    displayName
+    position
+    slug
+    elements {
+      keyName
+      position
+      slug
+      elements {
+        isHtml
+        keyName
+        position
+        slug
+        value
+      }
+    }
+  }
+`)},19301:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query blogPostsListingQuery(
+    $postIds: [ID]
+    $blogCategoryId: String
+    $withChildren: Boolean
+    $page: Int = 1
+    $pageSize: Int = 9
+    $limit: Int
+    $start: Int
+  ) {
+    blogPostsListing(
+      postIds: $postIds
+      categoryId: $blogCategoryId
+      withChildren: $withChildren
+      pagination: { page: $page, pageSize: $pageSize }
+      limit: $limit
+      start: $start
+    ) {
+      posts {
+        ...posts_postItem
+      }
+      pagination {
+        ...pagination
+      }
+    }
+  }
+  ${i.BlogPostFragment}
+  ${i.PaginationFragment}
+`},20624:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation addLetMeKnowMutation(
+    $sku: ID!
+    $name: String!
+    $email: String!
+    $newsletter: Boolean
+    $origin: String
+  ) {
+    addLetMeKnow(
+      letMeKnowRequest: {
+        sku: $sku
+        name: $name
+        email: $email
+        newsletter: $newsletter
+        origin: $origin
+      }
+    ) {
+      status
+    }
+  }
+`},20722:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query seoPdpContent($productId: String = "") {
+    seoPdpContent(productId: $productId) {
+      ids {
+        productId
+      }
+    }
+  }
+`},21332:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query basketQuery($basketId: ID = "") {
+    getBasket(basketId: $basketId) {
+      id
+      totals {
+        itemsQuantity
+      }
+      items {
+        sku
+        quantity
+        seller
+        product {
+          name
+          sku
+        }
+        services {
+          id
+          description
+        }
+      }
+    }
+  }
+`},21558:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment seo on ComponentBlogSeo {
+    title
+    description
+  }
+`},21886:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query searchQuery(
+    $term: String = ""
+    $filters: [FilterInput]
+    $sortType: String
+    $sortOrientation: String
+    $page: Int
+    $pageSize: Int = 20
+    $zipCode: String
+    $latitude: Float
+    $longitude: Float
+    $pmdPromoter: String
+    $storeId: String
+    $partnerId: String
+    $sellerId: String
+    $customerId: String
+    $showUnavailable: Boolean = true
+    $searchExperiment: String
+    $alwaysShowSubcategoryFilters: Boolean = true
+    $toggleWishlist: Boolean = true
+  ) {
+    search(
+      searchRequest: {
+        query: $term
+        pagination: { page: $page, size: $pageSize }
+        filters: $filters
+        sort: { type: $sortType, orientation: $sortOrientation }
+        location: { zipCode: $zipCode, latitude: $latitude, longitude: $longitude }
+        metadata: {
+          partnerId: $partnerId
+          sellerId: $sellerId
+          showUnavailable: $showUnavailable
+          loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId }
+          customerId: $customerId
+          searchExperiment: $searchExperiment
+          alwaysShowSubcategoryFilters: $alwaysShowSubcategoryFilters
+        }
+      }
+    ) {
+      products {
+        isOnWishlist @include(if: $toggleWishlist)
+        type
+      }
+      sorts {
+        label
+        selected
+        type
+        orientation
+      }
+      pagination {
+        page
+        pages
+        records
+        start
+        size
+      }
+    }
+  }
+`)},21914:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation SetFollowStatus(
+    $sellerId: String!
+    $customerId: String!
+    $followSeller: Boolean!
+  ) {
+    setFollowStatus(
+      request: {
+        sellerId: $sellerId
+        customerId: $customerId
+        followSeller: $followSeller
+      }
+    ) {
+      ... on FollowerErrorResponse {
+        message
+        detail
+      }
+      ... on FollowerFollowingSellerResponse {
+        customerId
+        sellerId
+        isFollowing
+      }
+    }
+  }
+`},22260:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment media on Media {
+    audios
+    images
+    podcasts
+    videos
+  }
+`)},23328:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(37181));t.default=(0,n.default)`
+  query adsItemsQuery(
+    $metadata: MetadataInput!
+    $banners: [AdsBannerInput!]
+    $products: [AdsProductInput!]
+    $zipcode: String
+    $omitProductIds: [String!]
+    $offerOptions: OfferOptionsInput
+  ) {
+    ads(
+      input: {
+        metadata: $metadata
+        banners: $banners
+        products: $products
+        zipcode: $zipcode
+        omitProductIds: $omitProductIds
+      }
+    ) {
+      banners {
+        campaignId
+        redirectUrl
+        imageUrl
+        trackId
+        slot
+      }
+      items {
+        trackId
+        campaignId
+        slot
+        item {
+          ...item
+        }
+      }
+      fillrates {
+        eventId
+        placement
+        received {
+          serverAdsAmount
+        }
+        requested {
+          categories
+          serverAdsAmount
+          skus
+        }
+        slotId
+      }
+    }
+  }
+  ${i.default}
+`},24227:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(28313));t.default=(0,n.default)`
+  query itemQuery(
+    $itemId: ID!
+    $includeTerms: Boolean = false
+    $termsSize: Int = 20
+    $offerOptions: OfferOptionsInput
+    $maxSellers: Int
+    $pageSellers: Int
+    $zipcode: String
+    $sellerId: String
+  ) {
+    item(
+      id: $itemId
+      maxSellers: $maxSellers
+      pageSellers: $pageSellers
+      zipcode: $zipcode
+      sellerId: $sellerId
+    ) {
+      type
+      id
+      partNumber
+      offerId
+      image
+      title
+      description
+      reference
+      available
+      isBuyBox
+      path
+      tags
+      minimumOrderQuantity
+      entity
+      terms(termsSize: $termsSize) @include(if: $includeTerms)
+      offers(options: $offerOptions) {
+        ...offers_itemOffers
+      }
+    }
+  }
+  ${i.default}
+`},26480:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+ fragment filters on FilterResponse {
+    type
+    slug
+    label
+    min
+    max
+    selectedMin
+    selectedMax
+    values {
+      id
+      slug
+      label
+      count
+      selected
+      type
+      values {
+        id
+        slug
+        label
+        count
+        selected
+        parent {
+          id
+          slug
+          label
+          count
+        }
+        values {
+          id
+          slug
+          label
+          count
+          selected
+          type
+        }
+      }
+    }
+  }
+`)},26529:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query CategoryDimensionsQuery(
+    $categoryId: String!
+    $subCategoryId: String!
+    $hasTag: Boolean = true
+  ) {
+    categoryDimensions(
+      categoryDimensionsRequest: {
+        category: $categoryId
+        subcategory: $subCategoryId
+        hasTag: $hasTag
+      }
+    ) {
+      category
+      subcategory
+      dimensions {
+        id
+        label
+        tag
+      }
+    }
+  }
+`},26929:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment items on Question {
+    id
+    question
+    questionCreatedAt
+    answer
+    answerCreatedAt
+  }
+`)},26930:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(35173));t.default=(0,n.default)`
+  query categoryQuery(
+    $categoryId: String
+    $subCategoryId: String = ""
+    $storeId: String
+  ) {
+    category(
+      categoryRequest: {
+        category: $categoryId
+        subcategory: $subCategoryId
+        metadata: { loyaltyParams: { storeId: $storeId } }
+      }
+    ) {
+      ...category
+      subcategories {
+        ...category
+        subcategories {
+          ...category
+          subcategories {
+            ...category
+            subcategories {
+              ...category
+            }
+          }
+        }
+      }
+    }
+  }
+  ${i.default}
+`},27844:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query GetNotifications(
+    $channel: String!
+    $organization: String!
+    $customerRefKey: String!
+    $startsAt: String = null
+  ) {
+    getNotifications(
+      request: {
+        channel: $channel
+        organization: $organization
+        filters: { customerRefKey: $customerRefKey, startsAt: $startsAt }
+      }
+    ) {
+      ... on ChatErrorResponse {
+        message
+        slug
+      }
+      ... on ChatNotificationsResponse {
+        conversationId
+        fromUserId
+        countMessagesNew
+        resumeLastMessage
+        dateLastMessage
+      }
+    }
+  }
+`},28313:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment offers_itemOffers on ItemOffer {
+    variationId
+    price
+    listPrice
+    currency
+    exchangeRate
+    idExchangeRate
+    originalPriceForeign
+    bestPrice {
+      discount
+      paymentMethodDescription
+      paymentMethodId
+      totalAmount
+    }
+    bestInstallmentPlan {
+      discount
+      installment
+      installmentAmount
+      interestAmount
+      paymentMethodDescription
+      paymentMethodId
+      totalAmount
+    }
+    paymentMethods {
+      id
+      installmentPlans {
+        discount
+        installment
+        installmentAmount
+        interestAmount
+        totalAmount
+      }
+    }
+    restrictions {
+      maxCheckoutQuantity
+      timerStartDate
+      timerEndDate
+    }
+    seller {
+      address {
+        address
+        city
+        complement
+        country
+        district
+        number
+        state
+        zipcode
+      }
+      tagRanking
+      available
+      deliveryDescription
+      deliveryId
+      description
+      documentNumber
+      id
+      isActive
+      isChatEnabled
+      isIpdv
+      isQuestionsAndAnswersEnabled
+      legalName
+      name
+      regulatoryData {
+        anvisa {
+          items
+          notApply
+        }
+        mapa {
+          items
+          notApply
+        }
+      }
+      sellerSince
+      sellsToCompany
+      shippingDocumentNumber
+      sku
+      stats {
+        answerRate {
+          message
+          status
+        }
+        deliveryRate {
+          message
+          status
+        }
+        score
+        totalSales
+      }
+      tags {
+        action {
+          type
+          url
+        }
+        backgroundColor
+        code
+        discountType
+        discountValue
+        endDate
+        icon
+        iconProperties {
+          width
+          height
+          position
+        }
+        layout
+        message
+        startDate
+        textColor
+        type
+        version
+      }
+    }
+    badges {
+      container
+      imageUrl
+      position
+      slug
+      text
+      tooltip
+    }
+    promotions {
+      id
+      description
+      benefit
+      subBenefit
+      benefitType
+      benefitValue
+      benefitPrice
+      benefitBestPrice
+    }
+  }
+`)},28727:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation addProductReviewMutation(
+    $characteristics: [ReviewCharacteristicInput]!
+    $campaignId: String
+    $productId: ID!
+    $rating: Int!
+    $recommended: Boolean!
+    $text: String!
+    $title: String!
+    $userId: ID
+    $userLocation: String
+    $userName: String
+    $reviewDataJWT: String
+  ) {
+    addProductReview(
+      reviewRequest: {
+        characteristics: $characteristics
+        metadata: { campaignId: $campaignId }
+        productId: $productId
+        rating: $rating
+        recommended: $recommended
+        text: $text
+        title: $title
+        user: { id: $userId, name: $userName, location: $userLocation }
+        reviewDataJWT: $reviewDataJWT
+      }
+    ) {
+      id
+      status
+      payloadErrors {
+        field
+        message
+      }
+    }
+  }
+`},32906:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+ fragment ads on Ads {
+    sponsored
+    id
+    label
+  }
+`)},33177:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation cartMutation(
+    $id: String
+    $productId: String!
+    $sellerId: String!
+    $extensions: DataValue
+    $quantity: String!
+    $services: [String]
+    $partnerId: String
+    $customerId: String
+    $separateSaleService: SeparateSaleServiceRequest
+    $isLoyalty: Boolean
+  ) {
+    addToCart(
+      cartRequest: {
+        id: $id
+        productId: $productId
+        sellerId: $sellerId
+        extensions: $extensions
+        quantity: $quantity
+        services: $services
+        partnerId: $partnerId
+        customerId: $customerId
+        separateSaleService: $separateSaleService
+        isLoyalty: $isLoyalty
+      }
+    ) {
+      id
+      status
+      items {
+        quantity
+        sku
+      }
+    }
+  }
+`},33440:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query ProductRating(
+    $variationId: String
+    $filters: [Filter]
+    $includeUserReviews: Boolean = false
+    $page: Int = 1
+    $pageSize: Int = 8
+    $sortType: UserReviewsSortType = MORE_RELEVANT
+    $hasTag: Boolean = true
+  ) {
+    productRating(variationId: $variationId, hasTag: $hasTag) {
+      productId
+      userReviews(
+        userReviewRequest: {
+          filters: $filters
+          pagination: { page: $page, size: $pageSize }
+          sortType: $sortType
+        }
+        hasTag: $hasTag
+      ) @include(if: $includeUserReviews) {
+        items {
+          partner
+          product {
+            images
+            productLink
+            productName
+            ratingValue
+            sku
+            videos
+          }
+          reviewId
+          description
+          rating
+          title
+          submissionDate
+          userData {
+            name
+          }
+          attributes {
+            label
+            value
+          }
+          dimensions {
+            id
+            label
+          }
+        }
+        page {
+          current
+          totalItems
+          totalPages
+        }
+      }
+      dimensions {
+        id
+        label
+        rating
+      }
+    }
+  }
+`},35173:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment category on Category {
+    id
+    label
+    title
+    description
+    meta {
+      description
+      seoBlock
+      canonical
+      titleAlias
+    }
+  }
+`)},35759:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment general on RatingInformation {
+    rating
+    reviewCount
+    commentCount
+  }
+`)},35852:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(84082));t.default=(0,n.default)`
+  query ListMessages(
+    $conversationId: String!
+    $channel: String!
+    $organization: String!
+    $paginationLimit: Int!
+    $paginationOffset: Int!
+    $filters: ChatFiltersMessage
+  ) {
+    listMessages(
+      request: {
+        conversationId: $conversationId
+        channel: $channel
+        organization: $organization
+        pagination: { limit: $paginationLimit, offset: $paginationOffset }
+        filters: $filters
+      }
+    ) {
+      ... on ChatErrorResponse {
+        message
+        slug
+        __typename
+      }
+      ... on ChatMessagePaginationResponse {
+        meta {
+          links {
+            next
+            previous
+          }
+        }
+        results {
+          ...chatMessage
+        }
+      }
+    }
+  }
+  ${i.default}
+`},36731:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query seoDepartmentCategories($initialLetter: String, $page: Int, $pageSize: Int) {
+    seoDepartmentCategories(
+      initialLetter: $initialLetter
+      page: $page
+      pageSize: $pageSize
+    ) {
+      data {
+        id
+        h1
+        categoryId
+        subcategoryId
+        meta {
+          truePath
+        }
+      }
+      totalCount
+      page
+      pageSize
+      pageCount
+    }
+  }
+`},37139:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment shippingCost on BasicShippingCost {
+    cost
+    costDescription
+  }
+`)},37181:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(66419)),o=a(r(2567)),u=a(r(97226)),l=a(r(28313)),s=a(r(58559)),d=a(r(6628));t.default=(0,n.default)`
+  fragment item on Item {
+    adsSellerId
+    ads {
+      id
+      sponsored
+    }
+    attributes {
+      ...attributes_itemAttributes
+    }
+    available
+    brand {
+      ...brand_itemBrand
+    }
+    category {
+      ...category_itemCategory
+    }
+    subcategory {
+      ...subcategory_itemSubcategory
+    }
+    shippingTag(shippingTagRequest: { location: { zipCode: $zipcode } }) {
+      cost
+      time
+      complement
+    }
+    id
+    image
+    offerId
+    path
+    title
+    offers(options: $offerOptions) {
+      ...offers_itemOffers
+    }
+    rating {
+      ...rating_itemRating
+    }
+    tags
+  }
+  ${i.default}
+  ${o.default}
+  ${u.default}
+  ${d.default}
+  ${l.default}
+  ${s.default}
+`},37572:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query ListConversations(
+    $organization: String! = ""
+    $channel: String! = ""
+    $fromUser: String! = ""
+    $toUser: String = ""
+    $offset: Int = 0
+    $limit: Int = 10
+    $status: ChatConversationStatusEnum = OPENED
+    $search: String = ""
+  ) {
+    listConversations(
+      request: {
+        organization: $organization
+        filters: {
+          status: $status
+          fromUserRefKey: $fromUser
+          toUserRefKey: $toUser
+          channel: $channel
+          displayName: $search
+        }
+        pagination: { offset: $offset, limit: $limit }
+      }
+    ) {
+      ... on ChatPaginationResponse {
+        results {
+          id
+          unreadFromCount
+          toUser {
+            refKey
+            fullName
+          }
+          lastInteractionAt
+          lastMessage {
+            content
+          }
+        }
+        meta {
+          page {
+            offset
+            limit
+          }
+          links {
+            previous
+            next
+          }
+        }
+      }
+      ... on ChatErrorResponse {
+        slug
+        message
+      }
+    }
+  }
+`},40923:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query locationQuery($zipCode: String) {
+    location(locationRequest: { zipCode: $zipCode }) {
+      street
+      state
+      city
+      latitude
+      longitude
+    }
+  }
+`)},41155:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query productQuery(
+    $productId: String
+    $partnerId: String
+    $sellerId: String
+    $zipcode: String
+    $termsSize: Int = 20
+    $includeTerms: Boolean = false
+    $includeDescription: Boolean = false
+    $showUnavailable: Boolean = false
+    $showPayment: Boolean = false
+    $pmdPromoter: String
+    $storeId: String
+    $channelCode: String
+    $customerId: String
+    $isLoyalty: Boolean
+  ) {
+    product(
+      productRequest: {
+        id: $productId
+        partnerId: $partnerId
+        sellerId: $sellerId
+        showDescription: $includeDescription
+        showUnavailable: $showUnavailable
+        showPayment: $showPayment
+        zipcode: $zipcode
+        metadata: {
+          customerId: $customerId
+          loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId }
+          channelCode: $channelCode
+          isLoyalty: $isLoyalty
+        }
+      }
+    ) {
+      isBuyBox
+      id
+      available
+      title
+      reference
+      image
+      terms(termsSize: $termsSize) @include(if: $includeTerms)
+      description @include(if: $includeDescription)
+      isOnWishlist
+      type
+      variationId
+      path
+      offerTags
+      url
+      minimumOrderQuantity
+    }
+  }
+`},41343:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment sharedItems on ComponentSharedItem {
+    title
+    description
+    image {
+      src
+      alt
+      width
+      height
+    }
+    link {
+      text
+      href
+    }
+  }
+`},42773:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query blogPostByEcommCategory(
+    $categoryId: String = ""
+    $subCategoryId: String = ""
+    $blogPostQuantity: Int = 3
+  ) {
+    blogPostsByEcomm(
+      ecommCategory: $categoryId
+      ecommSubcategory: $subCategoryId
+      quantity: $blogPostQuantity
+    ) {
+      posts {
+        ...posts_postItem
+      }
+    }
+  }
+  ${i.BlogPostFragment}
+`},42865:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`query suggestQuery(
+  $query: String!
+  $termsSize: Int
+  $productsSize: Int = 0
+  $categoriesSize: Int
+  $brandsSize: Int
+  $partnerId: String
+  $skipProducts: Boolean = false
+) {
+  suggest(
+    suggestRequest: {
+      query: $query
+      termsSize: $termsSize
+      productsSize: $productsSize
+      categoriesSize: $categoriesSize
+      brandsSize: $brandsSize
+      metadata: { partnerId: $partnerId }
+    }
+  ) {
+    terms {
+      term
+      count
+    }
+    products @skip(if: $skipProducts) {
+      id
+      variationId
+      title
+      price {
+        realPrice: price
+      }
+      path
+      image
+    }
+  }
+}
+`)},44185:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment price on Price {
+    paymentMethodDescription
+    price
+    fullPrice
+    bestPrice
+    discount
+    currency
+    exchangeRate
+    idExchangeRate
+    originalPriceForeign
+  }
+`)},44372:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment bundles on Bundle {
+    id
+    image
+    price
+    quantity
+    reference
+    title
+    dimensions {
+      ...dimensions
+    }
+    factsheet {
+      ...factsheet
+    }
+  }
+`)},44480:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query cartQuery($cartId: String = "") {
+    cart(cartRequest: { id: $cartId }) {
+      totals {
+        itemsQuantity
+      }
+    }
+  }
+`},46814:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+    query reviewSummary(
+      $productId: String! = ""
+    ) {
+      reviewSummary(productId: $productId) {
+        productId
+        summary
+        tags
+      }
+    }
+  `)},47078:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query reviewQuery(
+    $productId: String
+    $reviewPage: Int = 1
+    $reviewPageSize: Int
+    $reviewSortType: String
+    $reviewSortOrientation: String
+  ) {
+    review(
+      reviewRequest: {
+        id: $productId
+        pagination: { page: $reviewPage, size: $reviewPageSize }
+        sort: { type: $reviewSortType, orientation: $reviewSortOrientation }
+      }
+    ) {
+      stats {
+        count
+        average
+        distribution {
+          value
+          count
+        }
+        characteristics {
+          label
+          value
+        }
+      }
+      reviews {
+        title
+        text
+        rating
+        recommended
+        user {
+          name
+        }
+        date
+        characteristics {
+          label
+          value
+        }
+      }
+      sorts {
+        type
+        orientation
+        label
+      }
+      pagination {
+        page
+        pages
+        size
+        start
+      }
+    }
+  }
+`},47830:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment reviewsByRating on ReviewsByRating {
+    rating
+    total
+  }
+`)},49470:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query blogHomeContent($recommendationsLimit: Int = 3, $postsLimit: Int = 3) {
+    blogHomeContent(
+      recommendationsLimit: $recommendationsLimit
+      recommendationPostsLimit: $postsLimit
+    ) {
+      recommendations {
+        ...recommendations_blogRecommendations
+      }
+    }
+  }
+  ${i.BlogRecommendationsFragment}
+`},49483:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment meta_seoMeta on ComponentPresentationMeta {
+    title
+    description
+    canonical
+    truePath
+  }
+`},50091:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(37181)),o=a(r(53368));t.default=(0,n.default)`
+  query showcaseItemsQuery(
+    $showcaseId: String
+    $customerId: String
+    $placeId: String
+    $pageId: String
+    $partnerId: String
+    $pmdPromoter: String
+    $storeId: String
+    $productId: String
+    $filters: [FilterInput]
+    $includePagination: Boolean = true
+    $zipcode: String
+    $offerOptions: OfferOptionsInput
+  ) {
+    recommendation(
+      recommendationRequest: {
+        customerId: $customerId
+        pageId: $pageId
+        placeId: $placeId
+        productId: $productId
+        metadata: {
+          partnerId: $partnerId
+          loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId }
+        }
+        filters: $filters
+        searchRequest: { location: { zipCode: $zipcode } }
+      }
+    ) {
+      dynamic(showcaseId: $showcaseId) {
+        id
+        title
+        type
+        designTokenId
+        items {
+          ...item
+        }
+        button {
+          label
+        }
+        pagination {
+          ...showcasePagination @include(if: $includePagination)
+        }
+      }
+    }
+  }
+  ${i.default}
+  ${o.default}
+`},51701:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment brand on Brand {
+    label
+    slug
+  }
+`)},52251:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(73723));t.default=(0,n.default)`
+  fragment recommendations_blogRecommendations on BlogRecommendation {
+    id
+    title
+    variation
+    categoryId
+    postIds
+    link
+    quantity
+    blogCategoryId
+    parentCategoryId
+    theme {
+      background
+      card
+    }
+    posts {
+      ...posts_postItem
+    }
+  }
+  ${i.default}
+`},53368:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment showcasePagination on ShowCasePagination {
+    cursor
+    next
+    previous
+  }
+`},54436:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query brandsQuery($letter: String! = "a", $limit: Int = 100, $offset: Int = 0) {
+    brands(letter: $letter, limit: $limit, offset: $offset) {
+      meta {
+        page {
+          count
+          limit
+          offset
+        }
+      }
+      results {
+        letter
+        name
+        slug
+      }
+    }
+  }
+`},55346:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation adsEventsMutation($input: [SendAdsEventsInput!]!) {
+    sendAdsEvents(input: $input) {
+      status
+    }
+  }
+`},56170:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(66867));t.default=(0,n.default)`
+  fragment productImportTaxes on ProductTax {
+    freight {
+      ...productImportTaxesValue
+    }
+    product {
+      ...productImportTaxesValue
+    }
+    total {
+      ...productImportTaxesValue
+    }
+  }
+  ${i.default}
+`},57374:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query eligibleProductServicesQuery($request: EligibleProductServicesRequest!) {
+    eligibleProductServices(request: $request) {
+      eligible
+      services {
+        id
+        integrationCode
+        description
+        supplier {
+          cnpj
+          name
+          trandingName
+          id
+        }
+        offers {
+          id
+          campaignId
+          description
+          integrationCode
+          price
+          validity
+          validityType
+          treeId
+          wageCompensation {
+            amount
+            percentage
+          }
+          recommended
+        }
+      }
+      product {
+        customerUUID
+        serviceSlug
+        sellerId
+        productSku
+        productDescription
+        productBrand
+        productImageUrl
+        orderId
+        orderUUID
+        subOrderId
+        subOrderUUID
+      }
+    }
+  }
+`},57769:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment meta_metaCategory on MetaCategory {
+    canonical
+    breadcrumbAlias
+    description
+    seoBlock
+  }
+`)},58559:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment rating_itemRating on Rating {
+    count
+    score
+  }
+`)},58605:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query allCategoriesQuery($storeId: String) {
+    allCategories: category(
+      categoryRequest: { metadata: { loyaltyParams: { storeId: $storeId } } }
+    ) {
+      label
+      id
+      description
+    }
+  }
+`)},59091:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query wishlistQuery($userId: String = "") {
+    wishlist(wishlistRequest: { userId: $userId }) {
+      id
+      count
+      items {
+        id
+      }
+    }
+  }
+`},59329:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment sellerInfo on SellerInfoResponse {
+    enabled
+  }
+`)},60361:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query CheckNotifications(
+    $channel: String!
+    $organization: String!
+    $customerRefKey: String!
+  ) {
+    checkNotifications(
+      request: {
+        channel: $channel
+        organization: $organization
+        filters: { customerRefKey: $customerRefKey }
+      }
+    ) {
+      ... on ChatErrorResponse {
+        message
+        slug
+      }
+      ... on ChatCheckNotificationsResponse {
+        hasNotification
+        hasNewMessages
+        hasNewConversations
+      }
+    }
+  }
+`},60406:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment loyalty on Loyalty {
+    value
+    type
+    attributes {
+      color
+      icon
+    }
+    label
+    description
+  }
+`)},60701:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation removeFromWishlist($variationId: String!, $userId: String!) {
+    removeFromWishlist(
+      wishlistRequest: { userId: $userId, product: { id: $variationId } }
+    ) {
+      status
+    }
+  }
+`},61554:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query productPathQuery(
+    $productId: String
+    $partnerId: String
+    $sellerId: String
+    $zipcode: String
+    $showUnavailable: Boolean = false
+    $showPayment: Boolean = false
+    $pmdPromoter: String
+    $storeId: String
+  ) {
+    product(
+      productRequest: {
+        id: $productId
+        partnerId: $partnerId
+        sellerId: $sellerId
+        showUnavailable: $showUnavailable
+        showPayment: $showPayment
+        zipcode: $zipcode
+        metadata: { loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId } }
+      }
+    ) {
+      path
+    }
+  }
+`},62148:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment dimensions on Dimension {
+    height
+    length
+    weight
+    width
+  }`)},62431:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(66419));t.default=(0,n.default)`
+  query videoQuery($uuid: String!, $zipcode: String) {
+    videoDetail(uuid: $uuid) {
+      creator {
+        type
+        name
+        avatar
+        showcase_id
+      }
+      medias {
+        url
+        quality
+        thumbnail
+        uuid
+      }
+      products {
+        id
+        image
+        path
+        title
+        available
+        attributes {
+          ...attributes_itemAttributes
+        }
+        brand {
+          label
+        }
+        shippingTag(shippingTagRequest: { location: { zipCode: $zipcode } }) {
+          cost
+        }
+        minimumOrderQuantity
+        offers {
+          listPrice
+          price
+          bestPrice {
+            totalAmount
+            paymentMethodDescription
+          }
+          bestInstallmentPlan {
+            totalAmount
+            installmentAmount
+            paymentMethodDescription
+            installment
+          }
+          seller {
+            id
+            tags {
+              message
+              type
+              backgroundColor
+              textColor
+              icon
+              layout
+              iconProperties {
+                width
+                height
+                position
+              }
+              version
+              code
+              action {
+                type
+                url
+              }
+              discountType
+              discountValue
+              startDate
+              endDate
+            }
+          }
+        }
+        category {
+          id
+          subcategories {
+            id
+          }
+        }
+      }
+      thumbnail
+      title
+      url
+      uuid
+    }
+  }
+  ${i.default}
+`},63071:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment seller on Seller {
+    id
+    sku
+    description
+    category
+    deliveryId
+    deliveryDescription
+    restrictions
+    details {
+      id
+      legalName
+      documentNumber
+      shippingDocumentNumber
+      score
+      sellerSince
+      totalSales
+      deliveryRate {
+        message
+        status
+      }
+      answerRate {
+        message
+        status
+      }
+      address {
+        address
+        number
+        complement
+        district
+        city
+        state
+        country
+        zipcode
+      }
+      regulatoryData {
+        mapa {
+          notApply
+          items
+        }
+        anvisa {
+          notApply
+          items
+        }
+      }
+    }
+     tags {
+      code
+      discountType
+      discountValue
+      endDate
+      message
+      type
+      version
+      action {
+        type
+        url
+      }
+    }
+    isChatEnabled
+  }
+`)},63217:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query relevantLinksQuery(
+    $relevantLinksPageTypes: [String!]
+    $relevantLinksLinkGroup: [String!]
+    $relevantLinksPage: Int = 1
+    $relevantLinksPageSize: Int = 10
+  ) {
+    relevantLinks(
+      pageTypes: $relevantLinksPageTypes
+      linkGroup: $relevantLinksLinkGroup
+      pagination: { page: $relevantLinksPage, pageSize: $relevantLinksPageSize }
+    ) {
+      items {
+        id
+        label
+        href
+        title
+        targetBlank
+        pageTypes {
+          id
+          pageName
+        }
+        linkGroup
+      }
+      page
+      totalPages
+      totalRecords
+      pageSize
+    }
+  }
+`},64398:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment faq on ComponentPresentationFaq {
+    answer: Answer
+    question: Question
+  }
+`},66419:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment attributes_itemAttributes on ItemAttribute {
+    current
+    label
+    type
+    values {
+      available
+      image
+      path
+      value
+      variationId
+    }
+  }
+`)},66867:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment productImportTaxesValue on ImportTaxProduct {
+    icmsValue
+    importTaxValue
+    iofValue
+  }
+`},66983:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query PromoterShowcase($storeId: Int) {
+    promoterShowcase(storeId: $storeId) {
+      avatar
+      name
+    }
+  }
+`},67117:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+ fragment attributes on Attribute {
+    type
+    label
+    value
+    current
+    values
+  }
+`)},67370:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query IsCustomerFollowingSeller($sellerId: String!, $customerId: String!) {
+    isCustomerFollowingSeller(request: { sellerId: $sellerId, customerId: $customerId }) {
+      ... on FollowerErrorResponse {
+        message
+        detail
+      }
+      ... on FollowerFollowingSellerResponse {
+        customerId
+        sellerId
+        isFollowing
+      }
+    }
+  }
+`},68453:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation UpdateReadbyConversation(
+    $conversationId: String!
+    $userId: String!
+    $organization: String!
+  ) {
+    updateReadbyConversation(
+      request: {
+        conversationId: $conversationId
+        organization: $organization
+        fromUserRefKey: $userId
+      }
+    ) {
+      ... on ChatConversationResponse {
+        id
+        unreadFromCount
+        toUser {
+          refKey
+          fullName
+        }
+        lastInteractionAt
+      }
+    }
+  }
+`},69151:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query seoDepartmentSubCategories($initialLetter: String, $page: Int, $pageSize: Int) {
+    seoDepartmentSubCategories(
+      initialLetter: $initialLetter
+      page: $page
+      pageSize: $pageSize
+    ) {
+      data {
+        id
+        h1
+        categoryId
+        subcategoryId
+        meta {
+          truePath
+        }
+      }
+      totalCount
+      page
+      pageSize
+      pageCount
+    }
+  }
+`},73106:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment questionPagination on QuestionPagination {
+    page
+    totalPages
+  }
+`)},73551:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query searchQuery(
+    $term: String = ""
+    $filters: [FilterInput]
+    $sortType: String
+    $sortOrientation: String
+    $page: Int
+    $pageSize: Int = 10
+    $zipCode: String
+    $latitude: Float
+    $longitude: Float
+    $pmdPromoter: String
+    $storeId: String
+    $partnerId: String
+    $sellerId: String
+    $customerId: String
+    $showUnavailable: Boolean = true
+    $searchExperiment: String
+    $alwaysShowSubcategoryFilters: Boolean = true
+    $trackId: String = null
+    $experiment: String
+    $bypass: Boolean = false
+    $pageName: String
+    $userAgent: String
+    $ignoreSpellCheck: Boolean = false
+    $offerOptions: OfferOptionsInput
+    $maxSellers: Int = 1
+    $vehicleVersionId: String! = ""
+  ) {
+    search(
+      searchRequest: {
+        query: $term
+        pagination: { page: $page, size: $pageSize }
+        filters: $filters
+        sort: { type: $sortType, orientation: $sortOrientation }
+        location: { zipCode: $zipCode, latitude: $latitude, longitude: $longitude }
+        metadata: {
+          partnerId: $partnerId
+          sellerId: $sellerId
+          showUnavailable: $showUnavailable
+          loyaltyParams: { pmdPromoter: $pmdPromoter, storeId: $storeId }
+          customerId: $customerId
+          searchExperiment: $searchExperiment
+          alwaysShowSubcategoryFilters: $alwaysShowSubcategoryFilters
+          trackId: $trackId
+          maxSellers: $maxSellers
+        }
+        requestData: { userAgent: $userAgent, pageName: $pageName }
+        experiment: { bypass: $bypass, name: $experiment }
+        ignoreSpellCheck: $ignoreSpellCheck
+      }
+    ) {
+      items {
+        attributes {
+          type
+          label
+          current
+          values {
+            variationId
+            value
+            path
+            image
+            available
+          }
+        }
+        category {
+          id
+          name
+          subcategories {
+            id
+          }
+        }
+        subcategory {
+          id
+          name
+        }
+        type
+        id
+        offerId
+        image
+        title
+        reference
+        available
+        isBuyBox
+        path
+        tags
+        minimumOrderQuantity
+        carIsCompatible(vehicleVersionId: $vehicleVersionId)
+        ads {
+          sponsored
+          trackId
+        }
+        offers(options: $offerOptions) {
+          listPrice
+          price
+          bestInstallmentPlan {
+            paymentMethodDescription
+            totalAmount
+            installmentAmount
+            installment
+          }
+          bestPrice {
+            totalAmount
+            discount
+            paymentMethodDescription
+            paymentMethodId
+          }
+          badges {
+            text
+            imageUrl
+          }
+          currency
+          discounts {
+            discountPrice
+            description
+          }
+          restrictions {
+            maxCheckoutQuantity
+            timerStartDate
+            timerEndDate
+          }
+          seller {
+            id
+            stats {
+              score
+            }
+            tags {
+              discountType
+              discountValue
+              type
+              version
+            }
+          }
+        }
+        rating {
+          count
+          score
+        }
+        shippingTag(
+          shippingTagRequest: { location: { zipCode: $zipCode } },
+          filters: $filters
+        ) {
+          source
+          cost
+          time
+          complement
+        }
+      }
+      fastFilters {
+        id
+        label
+        slug
+        type
+        values {
+          id
+          label
+          slug
+          type
+          filterType
+          icon
+          selected
+          url
+          values
+        }
+      }
+      filters {
+        type
+        slug
+        label
+        min
+        max
+        selectedMin
+        selectedMax
+        values {
+          id
+          slug
+          label
+          count
+          position
+          selected
+          type
+          values {
+            id
+            slug
+            label
+            count
+            selected
+            parent {
+              id
+              slug
+              label
+              count
+            }
+            values {
+              id
+              slug
+              label
+              count
+              selected
+              type
+            }
+          }
+        }
+      }
+      pagination {
+        page
+        pages
+        records
+        size
+        start
+      }
+      sorts {
+        label
+        selected
+        type
+        orientation
+      }
+      adsFillRate {
+        eventId
+        placement
+        requested {
+          serverAdsAmount
+          clientAdsAmount
+        }
+        received {
+          serverAdsAmount
+        }
+      }
+      cardan
+      term {
+        raw
+        refined
+      }
+      viewMode
+      selection {
+        description
+        endDate
+        label {
+          action {
+            value
+          }
+        }
+      }
+    }
+  }
+`)},73723:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment posts_postItem on PostItem {
+    id
+    title
+    subtitle
+    slug
+    publishedAt
+    updatedAt
+    categoryId
+    categorySlug
+    categoryTitle
+    image {
+      alt
+      urls {
+        default
+        thumbnail
+        small
+        medium
+        large
+      }
+    }
+  }
+`},73814:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment subcategory on ProductCategory {
+    id
+    name
+  }
+`)},74029:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment factsheet on FactSheet {
+    displayName
+    slug
+    elements {
+      keyName
+      elements {
+        keyName
+        isHtml
+        value
+      }
+    }
+  }
+`)},74277:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment pagination on Pagination {
+    page
+    pages
+    records
+    size
+    start
+  }
+`},74575:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation DeleteMultipleFromItemList(
+    $productIds: [String!]!
+    $type: ItemListType = pre_basket
+  ) {
+    deleteMultipleFromItemList(body: { productIds: $productIds, type: $type }) {
+      message
+      status
+      payload {
+        productIds
+      }
+    }
+  }
+`},74903:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation addToWishlist(
+    $variationId: String!
+    $name: String
+    $price: Float
+    $userId: String!
+  ) {
+    addToWishlist(
+      wishlistRequest: {
+        userId: $userId
+        product: { id: $variationId, name: $name, price: $price }
+      }
+    ) {
+      status
+      item {
+        id
+        name
+        price
+        createdAt
+      }
+    }
+  }
+`},75914:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment variations on Variation {
+    id
+    label
+    type
+    value
+    image
+    available
+    path
+  }
+`)},76124:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(17651));t.default=(0,n.default)`
+  query adsQuery(
+    $metadata: MetadataInput!
+    $banners: [AdsBannerInput!]
+    $products: [AdsProductInput!]
+    $zipcode: String
+    $omitProductIds: [String!]
+  ) {
+    ads(
+      input: {
+        metadata: $metadata
+        banners: $banners
+        products: $products
+        zipcode: $zipcode
+        omitProductIds: $omitProductIds
+      }
+    ) {
+      banners {
+        campaignId
+        redirectUrl
+        imageUrl
+        trackId
+        slot
+      }
+      products {
+        trackId
+        campaignId
+        slot
+        product {
+          ...product
+        }
+      }
+      fillrates {
+        eventId
+        placement
+        received {
+          serverAdsAmount
+        }
+        requested {
+          categories
+          serverAdsAmount
+          skus
+        }
+        slotId
+      }
+    }
+  }
+  ${i.default}
+`},76174:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query VehiclePlate($plate: String = "") {
+    plateVehicle(plate: $plate) {
+      brandName
+      modelName
+      year
+      versionName
+      plate
+    }
+  }
+`},76903:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment installment on Installment {
+    paymentMethodId
+    paymentMethodDescription
+    quantity
+    amount
+    totalAmount
+  }
+`)},77125:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query abTestingQuery(
+    $metadata: MetadataInput!
+    $requestData: RequestDataInput!
+    $experimentByPass: Boolean = false
+  ) {
+    abTesting(
+      abTestRequest: {
+        metadata: $metadata
+        requestData: $requestData
+        experiment: { bypass: $experimentByPass }
+      }
+    ) {
+      id
+      name
+      channel
+      variantId
+      variantName
+      experimentName
+      endDate
+    }
+  }
+`},77179:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query PreBasketQuery {
+    itemList(type: pre_basket) {
+      id
+      items {
+        name
+        id
+        quantity
+        extras
+        item {
+          id
+          offers {
+            seller {
+              sku
+            }
+          }
+          financialServices {
+            offers {
+              description
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+`},77486:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query GetMpayOffers {
+    getMpayOffers {
+      cdc {
+        approved
+        totalLimit
+        availableLimit
+      }
+    }
+  }
+`},78549:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation createQuestion($questionRequest: QuestionMutationRequest!) {
+    createQuestion(questionRequest: $questionRequest) {
+      id
+      question
+    }
+  }
+`},79186:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.TrendsQuery=t.TradeInQuery=t.TopTermsQuery=t.SuggestionsQuery=t.ShowcaseQuery=t.ShowcaseItemsQuery=t.ShippingHookQuery=t.SeoSearchQuery=t.SeoPdpContentQuery=t.SearchItemQuery=t.SeoDepartmentSubCategoriesQuery=t.SeoDepartmentQuery=t.SeoDepartmentCategoriesQuery=t.SellerPageQuery=t.SearchQuery=t.ReviewSummaryQuery=t.ReviewQuery=t.RetrieveProductKeySellingPointsQuery=t.QuestionsQuery=t.PromoterShowcaseQuery=t.ProductRatingQuery=t.ProductQuery=t.ProductPathQuery=t.MpayOffersQuery=t.LocationQuery=t.LastProductQuery=t.ItemQuery=t.IsCustomerFollowingSeller=t.ImportTaxQuery=t.HomePageContentQuery=t.EligibleProductServicesQuery=t.ChatNotificationsQuery=t.ChatNotificationsCheckerQuery=t.ChatMessagesQuery=t.ChatConversationsQuery=t.CategoryQuery=t.CategoryDimensionsQuery=t.CartQuery=t.BreadcrumbQuery=t.BlogPostsListingQuery=t.BlogPostsByEcommQuery=t.BlogHomeContentQuery=t.BrandsQuery=t.AllCategoriesQuery=t.AllBrandsQuery=t.AdsShowcaseQuery=t.AdsQuery=t.AdsItemsQuery=t.AdsBrandsQuery=t.AbTestingQuery=void 0,t.SeoRelevantLinksQuery=t.PreBasketQuery=t.BasketQuery=t.WishlistQuery=t.VideoQuery=t.VehiclePlateQuery=t.VehiclePartCompatibilityBySkuQuery=t.VehiclePartCompatibilityQuery=t.VehicleCardanFilterQuery=t.UnreadCountCustomerMessageQuery=void 0;var n=r(77125);Object.defineProperty(t,"AbTestingQuery",{enumerable:!0,get:function(){return a(n).default}});var i=r(99894);Object.defineProperty(t,"AdsBrandsQuery",{enumerable:!0,get:function(){return a(i).default}});var o=r(23328);Object.defineProperty(t,"AdsItemsQuery",{enumerable:!0,get:function(){return a(o).default}});var u=r(76124);Object.defineProperty(t,"AdsQuery",{enumerable:!0,get:function(){return a(u).default}});var l=r(90615);Object.defineProperty(t,"AdsShowcaseQuery",{enumerable:!0,get:function(){return a(l).default}});var s=r(17009);Object.defineProperty(t,"AllBrandsQuery",{enumerable:!0,get:function(){return a(s).default}});var d=r(58605);Object.defineProperty(t,"AllCategoriesQuery",{enumerable:!0,get:function(){return a(d).default}});var c=r(54436);Object.defineProperty(t,"BrandsQuery",{enumerable:!0,get:function(){return a(c).default}});var f=r(49470);Object.defineProperty(t,"BlogHomeContentQuery",{enumerable:!0,get:function(){return a(f).default}});var m=r(42773);Object.defineProperty(t,"BlogPostsByEcommQuery",{enumerable:!0,get:function(){return a(m).default}});var p=r(19301);Object.defineProperty(t,"BlogPostsListingQuery",{enumerable:!0,get:function(){return a(p).default}});var g=r(6309);Object.defineProperty(t,"BreadcrumbQuery",{enumerable:!0,get:function(){return a(g).default}});var y=r(44480);Object.defineProperty(t,"CartQuery",{enumerable:!0,get:function(){return a(y).default}});var _=r(26529);Object.defineProperty(t,"CategoryDimensionsQuery",{enumerable:!0,get:function(){return a(_).default}});var b=r(26930);Object.defineProperty(t,"CategoryQuery",{enumerable:!0,get:function(){return a(b).default}});var v=r(37572);Object.defineProperty(t,"ChatConversationsQuery",{enumerable:!0,get:function(){return a(v).default}});var h=r(35852);Object.defineProperty(t,"ChatMessagesQuery",{enumerable:!0,get:function(){return a(h).default}});var $=r(60361);Object.defineProperty(t,"ChatNotificationsCheckerQuery",{enumerable:!0,get:function(){return a($).default}});var P=r(27844);Object.defineProperty(t,"ChatNotificationsQuery",{enumerable:!0,get:function(){return a(P).default}});var I=r(57374);Object.defineProperty(t,"EligibleProductServicesQuery",{enumerable:!0,get:function(){return a(I).default}});var S=r(83837);Object.defineProperty(t,"HomePageContentQuery",{enumerable:!0,get:function(){return a(S).default}});var M=r(97692);Object.defineProperty(t,"ImportTaxQuery",{enumerable:!0,get:function(){return a(M).default}});var O=r(67370);Object.defineProperty(t,"IsCustomerFollowingSeller",{enumerable:!0,get:function(){return a(O).default}});var j=r(24227);Object.defineProperty(t,"ItemQuery",{enumerable:!0,get:function(){return a(j).default}});var C=r(15779);Object.defineProperty(t,"LastProductQuery",{enumerable:!0,get:function(){return a(C).default}});var D=r(40923);Object.defineProperty(t,"LocationQuery",{enumerable:!0,get:function(){return a(D).default}});var F=r(77486);Object.defineProperty(t,"MpayOffersQuery",{enumerable:!0,get:function(){return a(F).default}});var Q=r(61554);Object.defineProperty(t,"ProductPathQuery",{enumerable:!0,get:function(){return a(Q).default}});var q=r(41155);Object.defineProperty(t,"ProductQuery",{enumerable:!0,get:function(){return a(q).default}});var w=r(33440);Object.defineProperty(t,"ProductRatingQuery",{enumerable:!0,get:function(){return a(w).default}});var R=r(66983);Object.defineProperty(t,"PromoterShowcaseQuery",{enumerable:!0,get:function(){return a(R).default}});var B=r(88313);Object.defineProperty(t,"QuestionsQuery",{enumerable:!0,get:function(){return a(B).default}});var k=r(10093);Object.defineProperty(t,"RetrieveProductKeySellingPointsQuery",{enumerable:!0,get:function(){return a(k).default}});var T=r(47078);Object.defineProperty(t,"ReviewQuery",{enumerable:!0,get:function(){return a(T).default}});var A=r(46814);Object.defineProperty(t,"ReviewSummaryQuery",{enumerable:!0,get:function(){return a(A).default}});var z=r(21886);Object.defineProperty(t,"SearchQuery",{enumerable:!0,get:function(){return a(z).default}});var x=r(97578);Object.defineProperty(t,"SellerPageQuery",{enumerable:!0,get:function(){return a(x).default}});var L=r(36731);Object.defineProperty(t,"SeoDepartmentCategoriesQuery",{enumerable:!0,get:function(){return a(L).default}});var W=r(13719);Object.defineProperty(t,"SeoDepartmentQuery",{enumerable:!0,get:function(){return a(W).default}});var N=r(69151);Object.defineProperty(t,"SeoDepartmentSubCategoriesQuery",{enumerable:!0,get:function(){return a(N).default}});var E=r(73551);Object.defineProperty(t,"SearchItemQuery",{enumerable:!0,get:function(){return a(E).default}});var U=r(20722);Object.defineProperty(t,"SeoPdpContentQuery",{enumerable:!0,get:function(){return a(U).default}});var V=r(80601);Object.defineProperty(t,"SeoSearchQuery",{enumerable:!0,get:function(){return a(V).default}});var K=r(9033);Object.defineProperty(t,"ShippingHookQuery",{enumerable:!0,get:function(){return a(K).default}});var H=r(50091);Object.defineProperty(t,"ShowcaseItemsQuery",{enumerable:!0,get:function(){return a(H).default}});var G=r(889);Object.defineProperty(t,"ShowcaseQuery",{enumerable:!0,get:function(){return a(G).default}});var J=r(42865);Object.defineProperty(t,"SuggestionsQuery",{enumerable:!0,get:function(){return a(J).default}});var Y=r(86736);Object.defineProperty(t,"TopTermsQuery",{enumerable:!0,get:function(){return a(Y).default}});var X=r(99397);Object.defineProperty(t,"TradeInQuery",{enumerable:!0,get:function(){return a(X).default}});var Z=r(5550);Object.defineProperty(t,"TrendsQuery",{enumerable:!0,get:function(){return a(Z).default}});var ee=r(95377);Object.defineProperty(t,"UnreadCountCustomerMessageQuery",{enumerable:!0,get:function(){return a(ee).default}});var et=r(80807);Object.defineProperty(t,"VehicleCardanFilterQuery",{enumerable:!0,get:function(){return a(et).default}});var er=r(14023);Object.defineProperty(t,"VehiclePartCompatibilityQuery",{enumerable:!0,get:function(){return a(er).default}});var ea=r(85175);Object.defineProperty(t,"VehiclePartCompatibilityBySkuQuery",{enumerable:!0,get:function(){return a(ea).default}});var en=r(76174);Object.defineProperty(t,"VehiclePlateQuery",{enumerable:!0,get:function(){return a(en).default}});var ei=r(62431);Object.defineProperty(t,"VideoQuery",{enumerable:!0,get:function(){return a(ei).default}});var eo=r(59091);Object.defineProperty(t,"WishlistQuery",{enumerable:!0,get:function(){return a(eo).default}});var eu=r(21332);Object.defineProperty(t,"BasketQuery",{enumerable:!0,get:function(){return a(eu).default}});var el=r(77179);Object.defineProperty(t,"PreBasketQuery",{enumerable:!0,get:function(){return a(el).default}});var es=r(63217);Object.defineProperty(t,"SeoRelevantLinksQuery",{enumerable:!0,get:function(){return a(es).default}})},79911:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.ProductWithVariationsFragment=t.ProductWithSellerFragment=t.ProductWithPaymentMethodFragment=t.ProductWithOffersFragment=t.ProductWithMediaFragment=t.ProductWithFinancialServices=t.ProductWithFactSheetFragment=t.ProductWithDimensionFragment=t.ProductWithBundleFragment=t.ProductWithBadgeFragment=t.ProductSubCategoryFragment=t.ProductShippingCostFragment=t.ProductRecommendationFragment=t.ProductRatingReviewsByRatingFragment=t.ProductRatingGeneralFragment=t.ProductRatingFragment=t.ProductPriceFragment=t.ProductLoyaltyFragment=t.ProductInstallmentFragment=t.ProductImportTaxesValueFragment=t.ProductImportTaxesFragment=t.ProductGeoLocTags=t.ProductCategoryFragment=t.ProductBrandFragment=t.ProductAttributesFragment=t.ProductAdsFragment=t.PaginationFragment=t.NewsletterFragment=t.ItemWithSubcategoryFragment=t.ItemWithRatingFragment=t.ItemWithOffersFragment=t.ItemWithMediaFragment=t.ItemWithFinancialServicesFragment=t.ItemWithFactSheetFragment=t.ItemWithDimensionFragment=t.ItemWithCategoryFragment=t.ItemWithCategoriesFragment=t.ItemWithBundleFragment=t.ItemWithBrandFragment=t.ItemWithAttributesFragment=t.ItemRecommendationFragment=t.HotLinksItemFragment=t.ChatMessageErrorFragment=t.ChatMessageFragment=t.CategoryFragment=t.BlogSeoFragment=t.BlogRecommendationsFragment=t.BlogPostFragment=t.BlogLinkListFragment=t.AllCategoriesMetaFragment=void 0,t.SeoSupportTextFragment=t.ShowcasePaginationFragment=t.SeoMetaFragment=t.SeoFaqFragment=t.SearchSelectionFragment=t.SearchProductFragment=t.SearchFiltersFragment=t.QuestionsSellerInfoFragment=t.QuestionsPaginationFragment=t.QuestionsItemFragment=void 0;var n=r(57769);Object.defineProperty(t,"AllCategoriesMetaFragment",{enumerable:!0,get:function(){return a(n).default}});var i=r(90957);Object.defineProperty(t,"BlogLinkListFragment",{enumerable:!0,get:function(){return a(i).default}});var o=r(73723);Object.defineProperty(t,"BlogPostFragment",{enumerable:!0,get:function(){return a(o).default}});var u=r(52251);Object.defineProperty(t,"BlogRecommendationsFragment",{enumerable:!0,get:function(){return a(u).default}});var l=r(21558);Object.defineProperty(t,"BlogSeoFragment",{enumerable:!0,get:function(){return a(l).default}});var s=r(35173);Object.defineProperty(t,"CategoryFragment",{enumerable:!0,get:function(){return a(s).default}});var d=r(84082);Object.defineProperty(t,"ChatMessageFragment",{enumerable:!0,get:function(){return a(d).default}});var c=r(12856);Object.defineProperty(t,"ChatMessageErrorFragment",{enumerable:!0,get:function(){return a(c).default}});var f=r(3962);Object.defineProperty(t,"HotLinksItemFragment",{enumerable:!0,get:function(){return a(f).default}});var m=r(37181);Object.defineProperty(t,"ItemRecommendationFragment",{enumerable:!0,get:function(){return a(m).default}});var p=r(66419);Object.defineProperty(t,"ItemWithAttributesFragment",{enumerable:!0,get:function(){return a(p).default}});var g=r(2567);Object.defineProperty(t,"ItemWithBrandFragment",{enumerable:!0,get:function(){return a(g).default}});var y=r(7986);Object.defineProperty(t,"ItemWithBundleFragment",{enumerable:!0,get:function(){return a(y).default}});var _=r(1606);Object.defineProperty(t,"ItemWithCategoriesFragment",{enumerable:!0,get:function(){return a(_).default}});var b=r(97226);Object.defineProperty(t,"ItemWithCategoryFragment",{enumerable:!0,get:function(){return a(b).default}});var v=r(96662);Object.defineProperty(t,"ItemWithDimensionFragment",{enumerable:!0,get:function(){return a(v).default}});var h=r(17787);Object.defineProperty(t,"ItemWithFactSheetFragment",{enumerable:!0,get:function(){return a(h).default}});var $=r(93509);Object.defineProperty(t,"ItemWithFinancialServicesFragment",{enumerable:!0,get:function(){return a($).default}});var P=r(8998);Object.defineProperty(t,"ItemWithMediaFragment",{enumerable:!0,get:function(){return a(P).default}});var I=r(28313);Object.defineProperty(t,"ItemWithOffersFragment",{enumerable:!0,get:function(){return a(I).default}});var S=r(58559);Object.defineProperty(t,"ItemWithRatingFragment",{enumerable:!0,get:function(){return a(S).default}});var M=r(6628);Object.defineProperty(t,"ItemWithSubcategoryFragment",{enumerable:!0,get:function(){return a(M).default}});var O=r(90758);Object.defineProperty(t,"NewsletterFragment",{enumerable:!0,get:function(){return a(O).default}});var j=r(74277);Object.defineProperty(t,"PaginationFragment",{enumerable:!0,get:function(){return a(j).default}});var C=r(32906);Object.defineProperty(t,"ProductAdsFragment",{enumerable:!0,get:function(){return a(C).default}});var D=r(67117);Object.defineProperty(t,"ProductAttributesFragment",{enumerable:!0,get:function(){return a(D).default}});var F=r(51701);Object.defineProperty(t,"ProductBrandFragment",{enumerable:!0,get:function(){return a(F).default}});var Q=r(10112);Object.defineProperty(t,"ProductCategoryFragment",{enumerable:!0,get:function(){return a(Q).default}});var q=r(13576);Object.defineProperty(t,"ProductGeoLocTags",{enumerable:!0,get:function(){return a(q).default}});var w=r(56170);Object.defineProperty(t,"ProductImportTaxesFragment",{enumerable:!0,get:function(){return a(w).default}});var R=r(66867);Object.defineProperty(t,"ProductImportTaxesValueFragment",{enumerable:!0,get:function(){return a(R).default}});var B=r(76903);Object.defineProperty(t,"ProductInstallmentFragment",{enumerable:!0,get:function(){return a(B).default}});var k=r(60406);Object.defineProperty(t,"ProductLoyaltyFragment",{enumerable:!0,get:function(){return a(k).default}});var T=r(44185);Object.defineProperty(t,"ProductPriceFragment",{enumerable:!0,get:function(){return a(T).default}});var A=r(95057);Object.defineProperty(t,"ProductRatingFragment",{enumerable:!0,get:function(){return a(A).default}});var z=r(35759);Object.defineProperty(t,"ProductRatingGeneralFragment",{enumerable:!0,get:function(){return a(z).default}});var x=r(47830);Object.defineProperty(t,"ProductRatingReviewsByRatingFragment",{enumerable:!0,get:function(){return a(x).default}});var L=r(17651);Object.defineProperty(t,"ProductRecommendationFragment",{enumerable:!0,get:function(){return a(L).default}});var W=r(37139);Object.defineProperty(t,"ProductShippingCostFragment",{enumerable:!0,get:function(){return a(W).default}});var N=r(73814);Object.defineProperty(t,"ProductSubCategoryFragment",{enumerable:!0,get:function(){return a(N).default}});var E=r(10611);Object.defineProperty(t,"ProductWithBadgeFragment",{enumerable:!0,get:function(){return a(E).default}});var U=r(44372);Object.defineProperty(t,"ProductWithBundleFragment",{enumerable:!0,get:function(){return a(U).default}});var V=r(62148);Object.defineProperty(t,"ProductWithDimensionFragment",{enumerable:!0,get:function(){return a(V).default}});var K=r(74029);Object.defineProperty(t,"ProductWithFactSheetFragment",{enumerable:!0,get:function(){return a(K).default}});var H=r(95983);Object.defineProperty(t,"ProductWithFinancialServices",{enumerable:!0,get:function(){return a(H).default}});var G=r(22260);Object.defineProperty(t,"ProductWithMediaFragment",{enumerable:!0,get:function(){return a(G).default}});var J=r(80735);Object.defineProperty(t,"ProductWithOffersFragment",{enumerable:!0,get:function(){return a(J).default}});var Y=r(8819);Object.defineProperty(t,"ProductWithPaymentMethodFragment",{enumerable:!0,get:function(){return a(Y).default}});var X=r(63071);Object.defineProperty(t,"ProductWithSellerFragment",{enumerable:!0,get:function(){return a(X).default}});var Z=r(75914);Object.defineProperty(t,"ProductWithVariationsFragment",{enumerable:!0,get:function(){return a(Z).default}});var ee=r(26929);Object.defineProperty(t,"QuestionsItemFragment",{enumerable:!0,get:function(){return a(ee).default}});var et=r(73106);Object.defineProperty(t,"QuestionsPaginationFragment",{enumerable:!0,get:function(){return a(et).default}});var er=r(59329);Object.defineProperty(t,"QuestionsSellerInfoFragment",{enumerable:!0,get:function(){return a(er).default}});var ea=r(26480);Object.defineProperty(t,"SearchFiltersFragment",{enumerable:!0,get:function(){return a(ea).default}});var en=r(99152);Object.defineProperty(t,"SearchProductFragment",{enumerable:!0,get:function(){return a(en).default}});var ei=r(14333);Object.defineProperty(t,"SearchSelectionFragment",{enumerable:!0,get:function(){return a(ei).default}});var eo=r(64398);Object.defineProperty(t,"SeoFaqFragment",{enumerable:!0,get:function(){return a(eo).default}});var eu=r(49483);Object.defineProperty(t,"SeoMetaFragment",{enumerable:!0,get:function(){return a(eu).default}});var el=r(53368);Object.defineProperty(t,"ShowcasePaginationFragment",{enumerable:!0,get:function(){return a(el).default}});var es=r(96438);Object.defineProperty(t,"SeoSupportTextFragment",{enumerable:!0,get:function(){return a(es).default}})},80601:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query seoSearchContent($term: String! = "") {
+    seoSearchContent(query: $term) {
+      id
+      h1
+      faq {
+        ...faq
+      }
+      meta {
+        ...meta_seoMeta
+      }
+      supportText {
+        ...supportText
+      }
+    }
+  }
+  ${i.SeoFaqFragment}
+  ${i.SeoMetaFragment}
+  ${i.SeoSupportTextFragment}
+`},80735:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment offers on Offer {
+    sku
+    price {
+      paymentMethodDescription
+      bestPrice
+      fullPrice
+      price
+      currency
+      discount
+    }
+    seller {
+      ...seller
+    }
+  }
+`)},80807:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query VehicleCardanFilter(
+    $brand: String = ""
+    $model: String = ""
+    $year: Int = 0
+    $includeModel: Boolean! = false
+    $includeVersion: Boolean! = false
+    $includeYear: Boolean! = false
+  ) {
+    vehicleBrands {
+      name
+      urlLogo
+    }
+    vehicleModels(brand: $brand) @include(if: $includeModel) {
+      name
+    }
+    vehicleYears(brand: $brand, model: $model) @include(if: $includeYear) {
+      year
+    }
+    vehicleVersions(brand: $brand, model: $model, year: $year)
+      @include(if: $includeVersion) {
+      id
+      name
+    }
+  }
+`},83837:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=r(79911);t.default=(0,n.default)`
+  query homePageContent(
+    $site: String
+    $includeMeta: Boolean = false
+    $includePopularDepartments: Boolean = false
+    $includeHotlinks: Boolean = false
+    $includeNewsletter: Boolean = false
+    $includeLinkList: Boolean = false
+  ) {
+    homePageContent(storeId: $site) {
+      storeId
+      h1
+      meta @include(if: $includeMeta) {
+        ...meta_seoMeta
+      }
+      popularDepartments @include(if: $includePopularDepartments) {
+        ...item_listHome
+      }
+      hotLinks @include(if: $includeHotlinks) {
+        ...item_listHome
+      }
+      newsletter @include(if: $includeNewsletter) {
+        ...newsletter
+      }
+      linkList @include(if: $includeLinkList) {
+        ...linkList
+      }
+    }
+  }
+  ${i.SeoMetaFragment}
+  ${i.HotLinksItemFragment}
+  ${i.NewsletterFragment}
+  ${i.BlogLinkListFragment}
+`},84082:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment chatMessage on ChatMessage {
+    id
+    fromUser {
+      id
+      fullName
+      refKey
+      type
+    }
+    toUser {
+      id
+      fullName
+      refKey
+      type
+    }
+    content
+    readBy
+    moderation {
+      status
+      whenAt
+    }
+    customFields {
+      name
+      value
+    }
+    whenAt
+  }
+`},84986:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.DeleteFromPreBasketMutation=t.UpdatePreBasketItemMutation=t.AddToPreBasketMutation=t.RemoveFromWishlist=t.CreateUserReviewSubmissionMutation=t.CreateQuestionMutation=t.ChatReadbyConversationMutation=t.ChatCreateMessageMutation=t.ChatCreateConversationMutation=t.ChangeFollowStatusMutation=t.AddProductReviewMutation=t.AdsEventsMutation=t.AddToWishlist=t.AddToCartMutation=t.AddLetMeKnowMutation=void 0;var n=r(20624);Object.defineProperty(t,"AddLetMeKnowMutation",{enumerable:!0,get:function(){return a(n).default}});var i=r(33177);Object.defineProperty(t,"AddToCartMutation",{enumerable:!0,get:function(){return a(i).default}});var o=r(74903);Object.defineProperty(t,"AddToWishlist",{enumerable:!0,get:function(){return a(o).default}});var u=r(55346);Object.defineProperty(t,"AdsEventsMutation",{enumerable:!0,get:function(){return a(u).default}});var l=r(28727);Object.defineProperty(t,"AddProductReviewMutation",{enumerable:!0,get:function(){return a(l).default}});var s=r(21914);Object.defineProperty(t,"ChangeFollowStatusMutation",{enumerable:!0,get:function(){return a(s).default}});var d=r(96948);Object.defineProperty(t,"ChatCreateConversationMutation",{enumerable:!0,get:function(){return a(d).default}});var c=r(13660);Object.defineProperty(t,"ChatCreateMessageMutation",{enumerable:!0,get:function(){return a(c).default}});var f=r(68453);Object.defineProperty(t,"ChatReadbyConversationMutation",{enumerable:!0,get:function(){return a(f).default}});var m=r(78549);Object.defineProperty(t,"CreateQuestionMutation",{enumerable:!0,get:function(){return a(m).default}});var p=r(87134);Object.defineProperty(t,"CreateUserReviewSubmissionMutation",{enumerable:!0,get:function(){return a(p).default}});var g=r(60701);Object.defineProperty(t,"RemoveFromWishlist",{enumerable:!0,get:function(){return a(g).default}});var y=r(95812);Object.defineProperty(t,"AddToPreBasketMutation",{enumerable:!0,get:function(){return a(y).default}});var _=r(90946);Object.defineProperty(t,"UpdatePreBasketItemMutation",{enumerable:!0,get:function(){return a(_).default}});var b=r(74575);Object.defineProperty(t,"DeleteFromPreBasketMutation",{enumerable:!0,get:function(){return a(b).default}})},85175:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query VehiclePartCompatibilityBySku(
+    $brand: String = ""
+    $model: String = ""
+    $version: String = ""
+    $year: Int = 0
+    $skuProduct: String = ""
+    $sellerId: String = ""
+  ) {
+    compatibilityV2(
+      brand: $brand
+      model: $model
+      year: $year
+      version: $version
+      sellerId: $sellerId
+      sku: $skuProduct
+    ) {
+      compatible
+    }
+  }
+`},86736:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query topTermsQuery($termsSize: Int) {
+    topTerms(topTermsRequest: { size: $termsSize }) {
+      label
+      terms
+    }
+  }`)},87134:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation CreateUserReviewSubmission($request: UserReviewSubmissionRequest) {
+    createUserReviewSubmission(request: $request) {
+      status
+      msg
+      description
+    }
+  }
+`},87345:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation SendAdsFillrateEvents($input: SendAdsFillrateEventsInput!) {
+    sendAdsFillrateEvents(input: $input) {
+      status
+    }
+  }
+`},88313:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  query questions(
+    $questionVariationId: String! = ""
+    $org: String! = ""
+    $itemsPerPage: Int = 50
+    $page: Int = 1
+  ) {
+    questions(
+      questionRequest: {
+        variationId: $questionVariationId
+        org: $org
+        itemsPerPage: $itemsPerPage
+        page: $page
+      }
+    ) {
+      totalQuestions
+    }
+  }
+`)},90615:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(17651));t.default=(0,n.default)`
+  query adsShowcaseQuery(
+    $metadata: MetadataInput!
+    $products: [AdsProductInput!]
+    $zipcode: String
+    $omitProductIds: [String!]
+  ) {
+    ads(
+      input: {
+        metadata: $metadata
+        products: $products
+        zipcode: $zipcode
+        omitProductIds: $omitProductIds
+      }
+    ) {
+      products {
+        trackId
+        campaignId
+        slot
+        product {
+          ...product
+        }
+      }
+    }
+  }
+  ${i.default}
+`},90758:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(41343));t.default=(0,n.default)`
+  fragment newsletter on Newsletter {
+    origin
+    invalidEmail
+    invalidName
+    default {
+      ...sharedItems
+    }
+    success {
+      ...sharedItems
+    }
+    error {
+      ...sharedItems
+    }
+  }
+  ${i.default}
+`},90946:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation UpdatePreBasketItem($itemId: String!, $body: UpdateListItemInput!) {
+    updateListItem(navigationId: $itemId, type: pre_basket, body: $body) {
+      message
+      status
+      payload {
+        id
+      }
+    }
+  }
+`},90957:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment linkList on ComponentPresentationLinkList {
+    href
+    value
+    alt
+  }
+`},93509:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment financialServices_itemFinancialServices on FinancialService {
+    id
+    description
+    offers {
+      campaignId
+      description
+      id
+      price
+      treeId
+      wageCompensation {
+        amount
+        percentage
+      }
+    }
+  }
+`)},95057:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment rating on Rating {
+    count
+    score
+  }
+`)},95377:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  query UnreadCountCustomerMessage($request: UnreadCountCustomerMessageRequest!) {
+    unreadCountCustomerMessage(request: $request) {
+      ... on UnreadCountCustomerMessageResponse {
+        value
+        type
+      }
+      ... on ChatErrorResponse {
+        message
+        slug
+        stack
+        detail {
+          msg
+          loc
+        }
+      }
+    }
+  }
+`},95812:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation AddToItemList($body: ListItemInput!, $upsert: Boolean) {
+    addToItemList(body: $body, upsert: $upsert) {
+      payload {
+        item {
+          id
+        }
+      }
+      status
+      message
+    }
+  }
+`},95983:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment financialServices on FinancialService {
+    id
+    description
+    offers {
+      campaignId
+      description
+      id
+      price
+      treeId
+      wageCompensation {
+        amount
+        percentage
+      }
+    }
+  }
+`)},96438:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment supportText on ComponentPresentationSupportText {
+    preview
+    content
+    aiText
+    useAiText
+  }
+`},96662:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment dimensions_itemDimensions on ItemDimension {
+    depth
+    height
+    weight
+    width
+  }
+`)},96948:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  mutation CreateConversation($request: ChatCreateConversationRequest!) {
+    createConversation(request: $request) {
+      ... on ChatConversationResponse {
+        id
+        unreadFromCount
+        toUser {
+          refKey
+          fullName
+        }
+        lastInteractionAt
+      }
+    }
+  }
+`},97226:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment category_itemCategory on ItemCategory {
+    id
+    name
+    url
+    subcategories {
+      id
+      name
+      url
+    }
+  }
+`)},97578:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+    query SellerPage(
+        $sellerPageId: String!
+    ) {
+        sellerPage(id: $sellerPageId) {
+            logoUrl
+            style {
+                backgroundColor
+                colorPrimary
+                colorSecondary
+            }
+            header {
+                coverImage {
+                    desktop
+                    mobile
+                }
+            }
+            primaryBanner {
+                category {
+                    id
+                    title
+                    label
+                    description
+                }
+                subCategory {
+                    id
+                    title
+                    label
+                    description
+                }
+                brand {
+                    label
+                    slug
+                }
+                images {
+                    desktop
+                    mobile
+                }
+                title
+                search {
+                    filters {
+                        type
+                        value
+                        description
+                    }
+                    sort {
+                        type
+                        orientation
+                        description
+                    }
+                }
+            }
+            secondaryBanner {
+                category {
+                    id
+                    title
+                    label
+                    description
+                }
+                subCategory {
+                    id
+                    title
+                    label
+                    description
+                }
+                brand {
+                    label
+                    slug
+                }
+                images {
+                    desktop
+                    mobile
+                }
+                title
+                search {
+                    filters {
+                        type
+                        value
+                        description
+                    }
+                    sort {
+                        type
+                        orientation
+                        description
+                    }
+                }
+            }
+            productSlide {
+                type
+                title
+                settings {
+                    category {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    subCategory {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    brand {
+                        label
+                        slug
+                    }
+                    search {
+                        filters {
+                            type
+                            value
+                            description
+                        }
+                        sort {
+                            type
+                            orientation
+                            description
+                        }
+                    }
+                }
+            }
+            productGrid {
+                type
+                title
+                settings {
+                    category {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    subCategory {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    brand {
+                        label
+                        slug
+                    }
+                    search {
+                        filters {
+                            type
+                            value
+                            description
+                        }
+                        sort {
+                            type
+                            orientation
+                            description
+                        }
+                    }
+                }
+            }
+            name
+            legalName
+            stats {
+              score
+              deliveryRate {
+                  message
+                  status
+              }
+              answerRate {
+                message
+                status
+            }
+            totalSales
+            totalFollowers
+            }
+            isChatEnabled
+            isOfficialStore
+            sellerSince
+            documentNumber
+            description
+            address {
+              address
+              city
+              complement
+              country
+              district
+              number
+              state
+              zipcode
+            }
+            regulatoryData {
+              mapa {
+                notApply
+                items
+              }
+              anvisa {
+                notApply
+                items
+              }
+            }
+            videos {
+                uuid
+                title
+                products {
+                    sku
+                    sellerId
+                    navigationId
+                }
+                medias {
+                    url
+                    urlPreview
+                    type
+                    thumbnail
+                }
+            }
+            hotlinks {
+                title
+                banners {
+                    category {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    subCategory {
+                        id
+                        title
+                        label
+                        description
+                    }
+                    brand {
+                        label
+                        slug
+                    }
+                    images {
+                        desktop
+                        mobile
+                    }
+                    title
+                    search {
+                        filters {
+                            type
+                            value
+                            description
+                        }
+                        sort {
+                            type
+                            orientation
+                            description
+                        }
+                    }
+                }
+            }
+        }
+    }
+`)},97692:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(56170));t.default=(0,n.default)`
+  query ImportTaxQuery($importTaxRequest: [ImportTaxRequest]) {
+    importTax(importTaxRequest: $importTaxRequest) {
+      id
+      taxes {
+        icmsPercentageRate
+        importPercentageRate
+        iofPercentageRate
+        dolarExchangeRate
+        totalValueImportTax
+        totalValueICMS
+        totalValueIOF
+        discount
+      }
+      products {
+        code
+        productTaxes {
+          realValue {
+            ...productImportTaxes
+          }
+          dolarValue {
+            ...productImportTaxes
+          }
+        }
+      }
+    }
+  }
+  ${i.default}
+`},99152:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0}),t.default=(0,a(r(10243)).default)(`
+  fragment products on Product {
+    id
+    variationId
+    title
+    description
+    image
+    available
+    position
+    isBuyBox
+    url
+    path
+    reference
+    attributes {
+      type
+      label
+      value
+      current
+      values
+    }
+    price {
+      paymentMethodDescription
+      price
+      fullPrice
+      bestPrice
+      discount
+    }
+  }
+`)},99397:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243));t.default=(0,n.default)`
+  fragment TradeInQuotation on FindTradeInQuotationResponse {
+    id
+    title
+    subtext
+    promotionText
+  }
+
+  fragment TradeInQuotationError on TradeInErrorResponse {
+    message
+    detail
+    error
+  }
+
+  query TradeInQuotationQuery($request: TradeInFindQuotationsRequest!) {
+    findTradeInQuotation(request: $request) {
+      ...TradeInQuotation
+      ...TradeInQuotationError
+    }
+  }
+`},99894:function(e,t,r){var a=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(t,"__esModule",{value:!0});let n=a(r(10243)),i=a(r(37181));t.default=(0,n.default)`
+  query AdsBrands(
+    $input: AdsBrandsInput!
+    $zipcode: String
+    $offerOptions: OfferOptionsInput
+  ) {
+    adsBrands(input: $input) {
+      campaignId
+      content {
+        creatives
+        headline
+        subtitle
+        buttonTitle
+        logo
+        subtitle
+        buttonTitle
+      }
+      id
+      items {
+        id
+        isAds
+        ...item
+      }
+      sellerId
+      slot
+      template
+      trackId
+      type
+    }
+  }
+  ${i.default}
+`}}]);
+//# sourceMappingURL=magalu-libs-dff2bcec-be3d31d7343171ae.js.map

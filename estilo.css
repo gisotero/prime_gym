@@ -31,12 +31,10 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
-
 /* hover para menu, todas as páginas */
 nav a:hover {
     color: red;
 }
-
 /*marcação para identificar em qual página está, todas as páginas*/
 nav a.ativo {
     color: rgb(108, 108, 108);
@@ -89,8 +87,7 @@ nav a.ativo {
     width: 100%;
 
 }
-
-/* PRODUTOS, página de produtos */
+/* produtos, página de produtos */
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -98,7 +95,6 @@ nav a.ativo {
     max-width: 1000px;
     margin: auto;
 }
-
 /* fundo dos produtos, página de produtos */
 .card {
     background: white;
@@ -118,7 +114,6 @@ nav a.ativo {
     min-height: 48px; 
     line-height: 1.3;
 }
-
 /*imagem dos produtos,página de produtos*/
 .imagem-produto {
     width: 100%;
@@ -130,7 +125,6 @@ nav a.ativo {
 .card:hover {
     transform: scale(1.05);
 }
-
 /* BOTÃO de comprar produtos, página de produtos */
 button {
     background-color: red;
@@ -228,20 +222,332 @@ button:hover {
     opacity: 0.9;
 }
 
+#modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    z-index:999;
 
+    justify-content:center;
+    align-items:center;
+}
 
+.pagina-detalhes{
 
+    width:92%;
+    height:90vh;
 
+    background:white;
+
+    border-radius:25px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:0px 0px 40px rgba(0,0,0,0.5);
+}
+
+/* PARTE DA IMAGEM */
+
+.lado-imagem{
+
+    width:50%;
+    height:100%;
+
+    background:#f3f3f3;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+.lado-imagem img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+/* PARTE DAS INFORMAÇÕES */
+
+.lado-info{
+
+    width:50%;
+    height:100%;
+
+    padding:60px;
+
+    overflow-y:auto;
+
+    font-family:Arial;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.lado-info h1{
+
+    font-size:55px;
+
+    margin-bottom:10px;
+
+    color:#111;
+}
+
+.lado-info h2{
+
+    font-size:42px;
+
+    color:red;
+
+    margin-bottom:30px;
+}
+
+.lado-info p{
+
+    font-size:22px;
+
+    line-height:1.7;
+
+    color:#444;
+
+    margin-bottom:35px;
+}
+
+/* TITULO INFO */
+
+.lado-info h3{
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+    color:#111;
+}
+
+/* LISTA */
+
+.lado-info ul{
+
+    padding-left:25px;
+
+    margin-bottom:40px;
+}
+
+.lado-info li{
+
+    font-size:20px;
+
+    margin-bottom:15px;
+
+    color:#333;
+
+    line-height:1.5;
+}
+
+/* BOTÃO */
+
+.lado-info button{
+
+    width:250px;
+
+    padding:18px;
+
+    font-size:20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:red;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.lado-info button:hover{
+
+    background:darkred;
+
+    transform:scale(1.03);
+}
+
+/* X FECHAR */
+
+.fechar{
+
+    position:absolute;
+
+    top:20px;
+    right:30px;
+
+    font-size:45px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:black;
+
+    transition:0.3s;
+}
+
+.fechar:hover{
+
+    transform:scale(1.1);
+
+    color:red;
+}
+.btn-detalhes{
+    margin-top:10px;
+    background:red
+    color:white;
+}
+
+.btn-detalhes:hover{
+    background:darkred
+}
+.lado-info ul{
+
+    margin-left:0px;
+
+    padding-left:25px;
+
+    list-style-position:outside;
+}
+
+.lado-info li{
+
+    margin-left:0px;
+
+    padding-left:5px;
+}
+.card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+.card button{
+
+    width:210px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:red;
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+    transition:0.3s;
+}
+
+.card button:hover{
+
+    background:darkred;
+
+    transform:scale(1.03);
+}
+.btn-detalhes{
+
+    margin-top:5px !important;
+}
+.galeria{
+
+    position:relative;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.galeria img{
+
+    width:85%;
+
+    max-height:85vh;
+
+    object-fit:contain;
+}
+
+.seta{
+
+    position:absolute;
+
+    background:rgba(255,255,255,0.2);
+
+    border:none;
+
+    color:white;
+
+    font-size:45px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    backdrop-filter:blur(5px);
+}
+
+.seta:hover{
+
+    background:red;
+
+    transform:scale(1.1);
+}
+
+.esquerda{
+
+    left:20px;
+}
+
+.direita{
+
+    right:20px;
+}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< CARRINHO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-
+/*tamanho e posicionamento da lista de itens, página carrinho*/
 #lista-carrinho {
     max-width: 900px;
     margin: auto;
     margin-top: 30px;
 }
-
-/* ITEM */
-
+/* card do item, página carrinho*/
 .item-carrinho {
     display: flex;
     align-items: center;
@@ -257,49 +563,39 @@ button:hover {
 
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
-
-/* CHECKBOX */
-
+/* CHECKBOX, página carrinho */
 .checkbox {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
-
-/* IMAGEM */
-
+/* imagens, página carrinho*/
 .item-carrinho img {
     width: 100px;
     height: 100px;
     object-fit: contain;
 }
-
-/* INFO */
-
+/* altura card produtos, página carrinho */
 .info {
     flex: 1;
 }
-
+/*texto h3, página carrinho */
 .info h3 {
     margin: 0;
     margin-bottom: 10px;
 }
-
-/* PREÇOS */
-
+/* preço unitário, página carrinho */
 .unitario {
     color: gray;
     margin: 5px 0;
 }
-
+/* preço total de cada produto, página carrinho */
 .total-item {
     color: red;
     font-weight: bold;
     margin: 5px 0;
 }
-
-/* QUANTIDADE */
-
+/* quantidade de itens, página carrinho */
 .quantidade {
     display: flex;
     align-items: center;
@@ -308,7 +604,7 @@ button:hover {
 
     margin-top: 15px;
 }
-
+/* botões de quantidade, página carrinho */
 .quantidade button {
 
     background-color: red;
@@ -325,14 +621,12 @@ button:hover {
 
     font-size: 16px;
 }
-
+/*número de quantidade, página carrinho */
 .quantidade span {
     font-weight: bold;
     font-size: 18px;
 }
-
-/* TOTAL */
-
+/* total a ser pago, página carrinho */
 #total {
 
     text-align: center;
@@ -345,20 +639,21 @@ button:hover {
 
     margin-bottom: 50px;
 }
+/*configurações da mensagem quando o carrinho estiver vazio, página carrinho*/
 .carrinho-vazio {
 
     text-align: center;
 
     margin-top: 100px;
 }
-
+/* título da mensagem de carrinho vazio, página carrinho*/
 .carrinho-vazio h2 {
 
     color: #555;
 
     margin-bottom: 20px;
 }
-
+/*botão de ir ás compras qaundo vazio, página carrinho*/
 .carrinho-vazio button {
 
     background-color: red;
@@ -377,7 +672,7 @@ button:hover {
 
     transition: 0.3s;
 }
-
+/* efeito hover ir ás compras quando vazio, página carrinho*/
 .carrinho-vazio button:hover {
 
     background-color: darkred;
@@ -401,7 +696,6 @@ button:hover {
     padding: 80px 60px;
     background:#f5f5f5;
 }
-
 /* texto sobre, página sobre */
 #sobre {
     width: 600px;
@@ -410,7 +704,6 @@ button:hover {
     line-height: 1.7;
     color: #000000;
 }
-
 /* imagem ao lado do texto sobre, página sobre */
 #imagem-sobre img {
     width: 560px;
@@ -420,12 +713,10 @@ button:hover {
     box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
     transition: 0.3s;
 }
-
 /* efeito hover na imagem, página sobre */
 #imagem-sobre img:hover {
     transform: scale(1.05);
 }
-
 /* titulo da seção produtos, página sobre */
 .titulo-secao {
     margin-top: 20px;
@@ -450,7 +741,6 @@ button:hover {
     background: rgb(226, 19, 19);
     margin-top: 8px;
 }
-
 /* TEXTOS, página sobre*/
 .texto-sobre {
     margin-left: 60px;
@@ -461,7 +751,6 @@ button:hover {
     font-weight: bold;
     color: rgba(0, 0, 0, 0.998);
 }
-
 /* lista de produtos vendidos, página sobre */
 ul {
     margin-left: 80px;
@@ -469,7 +758,6 @@ ul {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
 }
-
 /* espaço entre os itens da lista, página sobre */
 ul li {
     margin-bottom: 8px;
@@ -478,7 +766,6 @@ ul li {
 #ul{
 	margin-left:-40px
 }
-
 /*disposição dos bloco, página sobre*/
 .blocos {
     display: flex;
@@ -487,7 +774,6 @@ ul li {
     margin: 50px;
 	margin-top:80px
 }
-
 /* blocos de missão, visão e valores, pagina sobre*/
 .bloco {
     width: 250px;
@@ -529,7 +815,6 @@ ul li {
     font-family: Arial, sans-serif;
     color:#8e0202;
 }
-
 /* público-alvo, página sobre*/
 .publico {
     background-color: #f5f5f5;
@@ -539,7 +824,6 @@ ul li {
 .publico h2 {
     color: #8e0202;
 }
-
 /* diferencial, página sobre */
 .diferencial {
     background-color: #8e0202;
@@ -571,7 +855,6 @@ ul li {
     font-size: 24px;
 
 }
-
 /* CAIXA PRINCIPAL, página contato*/
 .contato-box {
     display: flex;
@@ -581,7 +864,6 @@ ul li {
     padding: 40px;
     flex-wrap: wrap;
 }
-
 /* CADA ITEM, página contato*/
 .contato-item {
     background: white;
@@ -592,23 +874,19 @@ ul li {
     transition: 0.3s;
     box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
 }
-
 /* HOVER BONITO, página contato */
 .contato-item:hover {
     transform: translateY(-5px);
 }
-
 /* TITULO, página contato */
 .contato-item h3 {
     color: #c40000;
 }
-
 /* TEXTO MENOR, página contato */
 .contato-item p {
     font-size: 14px;
     color: #555;
 }
-
 /* DADO PRINCIPAL, página contato */
 .contato-item span {
     display: block;
@@ -616,7 +894,6 @@ ul li {
     font-weight: bold;
     color: #000;
 }
-
 /* TEXTO FINAL, página contato */
 .disponivel {
     text-align: center;
@@ -636,25 +913,20 @@ ul li {
 
 /* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PORTFOLIO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
-.portfolio-container {
-    padding: 60px;
-    background: #f5f5f5;
-    text-align: center;
-}
-
+/*posicionamento dos cards, página resultados*/
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     margin-top: 40px;
 }
-
+/*card dos clientes, página resultados*/
 .portfolio-card {
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 15px;
     transition: 0.3s;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 5px 15px rgba(8, 18, 128, 0.1);
 }
 /*configuração das imagens, página resultados*/
 .portfolio-card img {
