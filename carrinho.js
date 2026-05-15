@@ -116,5 +116,4 @@ function toggleSelecionado(index) {
 
     atualizarCarrinho();
 }
-
 atualizarCarrinho();
